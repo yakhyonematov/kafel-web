@@ -11,6 +11,7 @@ import ProductGrid from '../../../components/products/ProductGrid';
 import SectionTitle from '../../../components/home/SectionTitle';
 import { useScrollLock } from '../../../hooks/useScrollLock';
 import { useEscapeKey } from '../../../hooks/useEscapeKey';
+import StyledSelect from '../../../components/ui/StyledSelect';
 
 function ProductsCatalogContent() {
   const searchParams = useSearchParams();
@@ -160,7 +161,7 @@ function ProductsCatalogContent() {
             setUsage('');
             setFactoryId('');
           }}
-          className={`h-9 px-5 rounded-full text-xs font-bold uppercase tracking-wider shrink-0 transition-all border ${
+          className={`h-9 px-5 rounded-full text-sm font-semibold shrink-0 transition-all border ${
             (!surface && !usage && !factoryId)
               ? 'bg-primary border-primary text-white shadow-xs'
               : 'border-border bg-bg-secondary hover:border-text-primary text-text-primary'
@@ -170,7 +171,7 @@ function ProductsCatalogContent() {
         </button>
         <button
           onClick={() => setSurface('MATTE')}
-          className={`h-9 px-5 rounded-full text-xs font-bold uppercase tracking-wider shrink-0 transition-all border ${
+          className={`h-9 px-5 rounded-full text-sm font-semibold shrink-0 transition-all border ${
             surface === 'MATTE'
               ? 'bg-primary border-primary text-white shadow-xs'
               : 'border-border bg-bg-secondary hover:border-text-primary text-text-primary'
@@ -180,7 +181,7 @@ function ProductsCatalogContent() {
         </button>
         <button
           onClick={() => setSurface('GLOSSY')}
-          className={`h-9 px-5 rounded-full text-xs font-bold uppercase tracking-wider shrink-0 transition-all border ${
+          className={`h-9 px-5 rounded-full text-sm font-semibold shrink-0 transition-all border ${
             surface === 'GLOSSY'
               ? 'bg-primary border-primary text-white shadow-xs'
               : 'border-border bg-bg-secondary hover:border-text-primary text-text-primary'
@@ -190,7 +191,7 @@ function ProductsCatalogContent() {
         </button>
         <button
           onClick={() => setUsage('Pol')}
-          className={`h-9 px-5 rounded-full text-xs font-bold uppercase tracking-wider shrink-0 transition-all border ${
+          className={`h-9 px-5 rounded-full text-sm font-semibold shrink-0 transition-all border ${
             usage === 'Pol'
               ? 'bg-primary border-primary text-white shadow-xs'
               : 'border-border bg-bg-secondary hover:border-text-primary text-text-primary'
@@ -200,7 +201,7 @@ function ProductsCatalogContent() {
         </button>
         <button
           onClick={() => setUsage('Devor')}
-          className={`h-9 px-5 rounded-full text-xs font-bold uppercase tracking-wider shrink-0 transition-all border ${
+          className={`h-9 px-5 rounded-full text-sm font-semibold shrink-0 transition-all border ${
             usage === 'Devor'
               ? 'bg-primary border-primary text-white shadow-xs'
               : 'border-border bg-bg-secondary hover:border-text-primary text-text-primary'
@@ -212,7 +213,7 @@ function ProductsCatalogContent() {
           <button
             key={f.id}
             onClick={() => setFactoryId(f.id)}
-            className={`h-9 px-5 rounded-full text-xs font-bold uppercase tracking-wider shrink-0 transition-all border relative ${
+            className={`h-9 px-5 rounded-full text-sm font-semibold shrink-0 transition-all border relative ${
               factoryId === f.id
                 ? 'bg-primary border-primary text-white shadow-xs'
                 : 'border-border bg-bg-secondary hover:border-text-primary text-text-primary'
@@ -263,10 +264,10 @@ function ProductsCatalogContent() {
             <label className="text-xs font-bold text-text-primary uppercase tracking-wide">
               Ishlab chiqaruvchi (Zavod)
             </label>
-            <select
+            <StyledSelect
               value={factoryId}
               onChange={(e) => setFactoryId(e.target.value)}
-              className="w-full h-10 px-3 border border-border bg-white rounded-lg text-xs focus:outline-none focus:border-accent"
+              className="h-10 text-sm font-medium"
             >
               <option value="">Barcha zavodlar</option>
               {factories.map((f) => (
@@ -274,7 +275,7 @@ function ProductsCatalogContent() {
                   {f.name}
                 </option>
               ))}
-            </select>
+            </StyledSelect>
           </div>
 
           {/* Surface Type Filter */}
@@ -285,7 +286,7 @@ function ProductsCatalogContent() {
             <div className="flex flex-col gap-1.5">
               <button
                 onClick={() => setSurface('')}
-                className={`w-full h-9 px-3 rounded-lg text-left text-xs font-semibold border transition-all ${
+                className={`w-full h-9 px-3 rounded-lg text-left text-sm font-semibold border transition-all ${
                   surface === ''
                     ? 'bg-accent text-white border-accent'
                     : 'bg-white text-text-primary border-border hover:bg-bg-secondary'
@@ -295,7 +296,7 @@ function ProductsCatalogContent() {
               </button>
               <button
                 onClick={() => setSurface('GLOSSY')}
-                className={`w-full h-9 px-3 rounded-lg text-left text-xs font-semibold border transition-all ${
+                className={`w-full h-9 px-3 rounded-lg text-left text-sm font-semibold border transition-all ${
                   surface === 'GLOSSY'
                     ? 'bg-accent text-white border-accent'
                     : 'bg-white text-text-primary border-border hover:bg-bg-secondary'
@@ -305,7 +306,7 @@ function ProductsCatalogContent() {
               </button>
               <button
                 onClick={() => setSurface('MATTE')}
-                className={`w-full h-9 px-3 rounded-lg text-left text-xs font-semibold border transition-all ${
+                className={`w-full h-9 px-3 rounded-lg text-left text-sm font-semibold border transition-all ${
                   surface === 'MATTE'
                     ? 'bg-accent text-white border-accent'
                     : 'bg-white text-text-primary border-border hover:bg-bg-secondary'
@@ -321,15 +322,15 @@ function ProductsCatalogContent() {
             <label className="text-xs font-bold text-text-primary uppercase tracking-wide">
               Xona / Qo'llanilishi
             </label>
-            <select
+            <StyledSelect
               value={usage}
               onChange={(e) => setUsage(e.target.value)}
-              className="w-full h-10 px-3 border border-border bg-white rounded-lg text-xs focus:outline-none focus:border-accent"
+              className="h-10 text-sm font-medium"
             >
               <option value="">Barchasi</option>
               <option value="Pol">Pol uchun</option>
               <option value="Sanuzel">Sanuzel va oshxona devorlari uchun</option>
-            </select>
+            </StyledSelect>
           </div>
         </aside>
 
@@ -447,10 +448,10 @@ function ProductsCatalogContent() {
               <label className="text-xs font-bold text-text-primary uppercase tracking-wide">
                 Zavod
               </label>
-              <select
+              <StyledSelect
                 value={factoryId}
                 onChange={(e) => setFactoryId(e.target.value)}
-                className="w-full h-11 px-4 border border-border rounded-xl text-sm bg-white"
+                className="h-11 rounded-xl text-sm"
               >
                 <option value="">Barcha zavodlar</option>
                 {factories.map((f) => (
@@ -458,7 +459,7 @@ function ProductsCatalogContent() {
                     {f.name}
                   </option>
                 ))}
-              </select>
+              </StyledSelect>
             </div>
 
             {/* Surface */}
@@ -469,7 +470,7 @@ function ProductsCatalogContent() {
               <div className="grid grid-cols-3 gap-2">
                 <button
                   onClick={() => setSurface('')}
-                  className={`h-10 px-2 rounded-xl text-xs font-bold border transition-all ${
+                  className={`h-10 px-2 rounded-xl text-sm font-semibold border transition-all ${
                     surface === ''
                       ? 'bg-accent text-white border-accent'
                       : 'bg-bg-secondary text-text-primary border-border'
@@ -479,7 +480,7 @@ function ProductsCatalogContent() {
                 </button>
                 <button
                   onClick={() => setSurface('GLOSSY')}
-                  className={`h-10 px-2 rounded-xl text-xs font-bold border transition-all ${
+                  className={`h-10 px-2 rounded-xl text-sm font-semibold border transition-all ${
                     surface === 'GLOSSY'
                       ? 'bg-accent text-white border-accent'
                       : 'bg-bg-secondary text-text-primary border-border'
@@ -489,7 +490,7 @@ function ProductsCatalogContent() {
                 </button>
                 <button
                   onClick={() => setSurface('MATTE')}
-                  className={`h-10 px-2 rounded-xl text-xs font-bold border transition-all ${
+                  className={`h-10 px-2 rounded-xl text-sm font-semibold border transition-all ${
                     surface === 'MATTE'
                       ? 'bg-accent text-white border-accent'
                       : 'bg-bg-secondary text-text-primary border-border'
@@ -505,15 +506,15 @@ function ProductsCatalogContent() {
               <label className="text-xs font-bold text-text-primary uppercase tracking-wide">
                 Qo'llanilishi
               </label>
-              <select
+              <StyledSelect
                 value={usage}
                 onChange={(e) => setUsage(e.target.value)}
-                className="w-full h-11 px-4 border border-border rounded-xl text-sm bg-white"
+                className="h-11 rounded-xl text-sm"
               >
                 <option value="">Barchasi</option>
                 <option value="Pol">Pol uchun</option>
                 <option value="Sanuzel">Sanuzel va oshxona devorlari uchun</option>
-              </select>
+              </StyledSelect>
             </div>
           </div>
 

@@ -3,12 +3,20 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { ShoppingBag, Search, Menu, Phone, User, Globe, X } from 'lucide-react';
+import {
+  ShoppingBag, Search, Menu, Phone, User, X,
+  Home, LayoutGrid, Info, MapPin, MessageCircle, ArrowRight,
+} from 'lucide-react';
 import { NAVIGATION_LINKS } from '../../constants/navigation';
 import { SITE_CONFIG } from '../../constants/site';
 import { useCartStore } from '../../store/useCartStore';
 import { useFilterStore } from '../../store/useFilterStore';
 import MobileMenu from './MobileMenu';
+
+// Map icon name strings to actual Lucide components
+const ICON_MAP: Record<string, React.ElementType> = {
+  Home, LayoutGrid, Info, MapPin, MessageCircle,
+};
 
 export default function Header() {
   const pathname = usePathname();
@@ -18,7 +26,7 @@ export default function Header() {
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [searchVal, setSearchVal] = useState('');
   const [mounted, setMounted] = useState(false);
-  
+
   const totalItems = useCartStore((state) => state.getTotalItems());
   const setSearch = useFilterStore((state) => state.setSearch);
 
@@ -29,11 +37,7 @@ export default function Header() {
   // Monitor scroll for header styling
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -41,6 +45,7 @@ export default function Header() {
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!searchVal.trim()) return;
     setSearch(searchVal);
     setIsMobileSearchOpen(false);
     if (pathname !== '/products') {
@@ -48,191 +53,249 @@ export default function Header() {
     }
   };
 
-  const isTransparent = pathname === '/' && !isScrolled;
+  const isHomePage = pathname === '/';
+  const isTransparent = isHomePage && !isScrolled;
 
   return (
     <>
       <header
-        className="fixed top-0 md:top-4 left-0 md:left-1/2 md:-translate-x-1/2 w-full md:max-w-[1240px] px-0 md:px-6 z-[45] transition-all duration-300"
+        className="fixed top-0 left-0 right-0 z-[45] transition-all duration-500"
       >
-        {/* Mobile Search Overlay Bar */}
-        {isMobileSearchOpen && (
-          <div className="absolute inset-0 bg-white z-50 flex items-center px-4 gap-3 border-b border-border text-text-primary h-16 md:h-20 rounded-none md:rounded-full shadow-lg">
-            <form onSubmit={handleSearchSubmit} className="flex-1 flex items-center relative">
+        {/* Top Accent Line */}
+        <div
+          className={`h-[2px] w-full transition-all duration-500 ${
+            isTransparent ? 'bg-white/20' : 'bg-gradient-to-r from-accent via-primary to-accent'
+          }`}
+        />
+
+        {/* Main Navbar */}
+        <div
+          className={`w-full transition-all duration-500 ${
+            isTransparent
+              ? 'bg-black/20 backdrop-blur-md'
+              : 'bg-white/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.08)]'
+          }`}
+        >
+          <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16 md:h-[72px]">
+
+              {/* ─── Left: Logo & Brand ─── */}
+              <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+                {/* Diamond Logo Mark */}
+                <div className="relative">
+                  <div className={`w-9 h-9 flex items-center justify-center rounded-lg rotate-45 transition-all duration-300 group-hover:rotate-[55deg] group-hover:scale-105 ${
+                    isTransparent
+                      ? 'bg-white/20 border border-white/30 shadow-lg shadow-white/10'
+                      : 'bg-gradient-to-br from-accent to-primary shadow-md shadow-accent/25'
+                  }`}>
+                    <span className={`-rotate-45 font-black text-sm tracking-tight transition-colors ${
+                      isTransparent ? 'text-white' : 'text-white'
+                    }`}>V</span>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className={`font-black text-[13px] sm:text-[15px] tracking-[0.15em] uppercase leading-tight transition-colors ${
+                    isTransparent ? 'text-white' : 'text-primary'
+                  }`}>
+                    VODIY KAFEL
+                  </span>
+                  <span className={`hidden sm:block text-[9px] tracking-[0.3em] uppercase font-medium leading-none mt-0.5 transition-colors ${
+                    isTransparent ? 'text-white/60' : 'text-text-muted'
+                  }`}>
+                    SAVDO MARKAZI
+                  </span>
+                </div>
+              </Link>
+
+              {/* ─── Center: Desktop Navigation ─── */}
+              <nav className="hidden xl:flex items-center gap-0.5">
+                {NAVIGATION_LINKS.map((link) => {
+                  const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]) && link.href.split('#')[0] !== '/');
+                  const IconComponent = link.icon ? ICON_MAP[link.icon] : null;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`relative flex items-center gap-1.5 h-9 px-3.5 rounded-full text-[13px] font-semibold transition-all duration-200 group ${
+                        isTransparent
+                          ? isActive
+                            ? 'bg-white/15 text-white'
+                            : 'text-white/75 hover:text-white hover:bg-white/10'
+                          : isActive
+                            ? 'bg-accent/10 text-accent'
+                            : 'text-text-secondary hover:text-text-primary hover:bg-bg-secondary'
+                      }`}
+                    >
+                      {IconComponent && (
+                        <IconComponent className={`w-3.5 h-3.5 transition-transform duration-200 group-hover:scale-110 ${
+                          isActive
+                            ? isTransparent ? 'text-white' : 'text-accent'
+                            : ''
+                        }`} />
+                      )}
+                      <span>{link.label}</span>
+                      {/* Active indicator dot */}
+                      {isActive && (
+                        <span className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full ${
+                          isTransparent ? 'bg-white' : 'bg-accent'
+                        }`} />
+                      )}
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              {/* ─── Right: Actions ─── */}
+              <div className="flex items-center gap-1 sm:gap-1.5">
+
+                {/* Desktop Search */}
+                <form onSubmit={handleSearchSubmit} className="hidden md:flex items-center relative">
+                  <input
+                    type="text"
+                    placeholder="Qidiruv..."
+                    value={searchVal}
+                    onChange={(e) => setSearchVal(e.target.value)}
+                    className={`w-36 lg:w-44 h-9 pl-3.5 pr-9 rounded-full text-xs font-medium transition-all duration-300 focus:outline-none focus:w-52 lg:focus:w-56 ${
+                      isTransparent
+                        ? 'bg-white/10 border border-white/20 text-white placeholder-white/40 focus:bg-white/15 focus:border-white/40'
+                        : 'bg-bg-secondary border border-transparent text-text-primary placeholder-text-muted focus:border-accent/40 focus:bg-white focus:shadow-sm'
+                    }`}
+                  />
+                  <button
+                    type="submit"
+                    className={`absolute right-3 top-1/2 -translate-y-1/2 transition-colors ${
+                      isTransparent ? 'text-white/50 hover:text-white' : 'text-text-muted hover:text-accent'
+                    }`}
+                    aria-label="Qidirish"
+                  >
+                    <Search className="w-3.5 h-3.5" />
+                  </button>
+                </form>
+
+                {/* Divider */}
+                <div className={`hidden md:block w-px h-6 mx-1.5 ${isTransparent ? 'bg-white/20' : 'bg-border'}`} />
+
+                {/* Quick Call */}
+                <a
+                  href={`tel:${SITE_CONFIG.phonePrimary.replace(/\s+/g, '')}`}
+                  className={`hidden sm:flex items-center gap-1.5 h-8 pl-2 pr-3 rounded-full text-[11px] font-bold transition-all duration-200 ${
+                    isTransparent
+                      ? 'text-white/80 hover:bg-white/10 hover:text-white'
+                      : 'text-text-secondary hover:bg-accent/10 hover:text-accent'
+                  }`}
+                  title="Qo'ng'iroq qilish"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  <span className="hidden lg:inline tracking-wide">Aloqa</span>
+                </a>
+
+                {/* Admin */}
+                <Link
+                  href="/admin/dashboard"
+                  className={`hidden sm:flex w-8 h-8 items-center justify-center rounded-full transition-all duration-200 ${
+                    isTransparent
+                      ? 'text-white/70 hover:bg-white/10 hover:text-white'
+                      : 'text-text-secondary hover:bg-bg-secondary hover:text-text-primary'
+                  }`}
+                  title="Admin Panel"
+                >
+                  <User className="w-4 h-4" />
+                </Link>
+
+                {/* Mobile Search */}
+                <button
+                  onClick={() => setIsMobileSearchOpen(true)}
+                  className={`w-8 h-8 flex items-center justify-center rounded-full md:hidden transition-all duration-200 ${
+                    isTransparent
+                      ? 'text-white/80 hover:bg-white/10 hover:text-white'
+                      : 'text-text-secondary hover:bg-bg-secondary hover:text-text-primary'
+                  }`}
+                  aria-label="Qidirish"
+                >
+                  <Search className="w-4 h-4" />
+                </button>
+
+                {/* Cart */}
+                <button
+                  onClick={() => {
+                    const event = new CustomEvent('open-cart-drawer');
+                    window.dispatchEvent(event);
+                  }}
+                  className={`relative w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 ${
+                    isTransparent
+                      ? 'text-white/80 hover:bg-white/10 hover:text-white'
+                      : 'text-text-secondary hover:bg-bg-secondary hover:text-text-primary'
+                  }`}
+                  aria-label="Savat"
+                >
+                  <ShoppingBag className="w-4 h-4" />
+                  {mounted && totalItems > 0 && (
+                    <span className="absolute -top-0.5 -right-0.5 bg-accent text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-white shadow-sm animate-in zoom-in-50 duration-200">
+                      {totalItems}
+                    </span>
+                  )}
+                </button>
+
+                {/* Hamburger Menu */}
+                <button
+                  onClick={() => setIsMobileMenuOpen(true)}
+                  className={`xl:hidden w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 ml-0.5 ${
+                    isTransparent
+                      ? 'text-white hover:bg-white/10'
+                      : 'text-text-primary hover:bg-bg-secondary'
+                  }`}
+                  aria-label="Menyu"
+                >
+                  <Menu className="w-[18px] h-[18px]" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Search Overlay */}
+      <div className={`fixed inset-0 z-[60] transition-all duration-300 ${isMobileSearchOpen ? 'visible' : 'invisible pointer-events-none'}`}>
+        <div
+          className={`fixed inset-0 bg-black/40 backdrop-blur-xs transition-opacity duration-300 ${isMobileSearchOpen ? 'opacity-100' : 'opacity-0'}`}
+          onClick={() => setIsMobileSearchOpen(false)}
+        />
+        <div className={`fixed top-0 left-0 right-0 bg-white shadow-2xl p-4 transition-transform duration-300 ${isMobileSearchOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+          <form onSubmit={handleSearchSubmit} className="flex items-center gap-3">
+            <div className="flex-1 relative">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
               <input
                 type="text"
                 placeholder="Mahsulot kodini yoki nomini qidiring..."
                 autoFocus
                 value={searchVal}
                 onChange={(e) => setSearchVal(e.target.value)}
-                className="w-full h-11 pl-4 pr-10 rounded-full border border-border bg-bg-secondary text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-accent focus:bg-white"
+                className="w-full h-12 pl-10 pr-4 rounded-xl border border-border bg-bg-secondary text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-accent focus:bg-white transition-all"
               />
-              <button
-                type="submit"
-                className="absolute right-3.5 text-text-muted hover:text-primary"
-                aria-label="Qidirish"
-              >
-                <Search className="w-4 h-4" />
-              </button>
-            </form>
-            <button
-              onClick={() => setIsMobileSearchOpen(false)}
-              className="p-2 rounded-full hover:bg-bg-secondary text-text-secondary"
-              aria-label="Qidiruvni yopish"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-        )}
-
-        {/* Main Floating Navbar Capsule */}
-        <div
-          className={`w-full h-16 md:h-20 transition-all duration-300 rounded-none md:rounded-full px-4 md:px-8 flex justify-between items-center gap-4 border ${
-            isTransparent
-              ? 'bg-transparent text-white border-transparent'
-              : 'bg-white/95 backdrop-blur-md text-text-primary shadow-lg shadow-black/5 border-border/80'
-          }`}
-        >
-          {/* 1. Left side: Menu trigger & Logo */}
-          <div className="flex items-center gap-2 md:gap-3 shrink-0">
-            {/* Hamburger menu trigger */}
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className={`p-2 rounded-full transition-colors hover:bg-black/5 ${
-                isTransparent ? 'hover:bg-white/10 text-white' : 'hover:bg-bg-secondary text-text-primary'
-              }`}
-              aria-label="Menyu"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
-
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-6 h-6 sm:w-7 sm:h-7 bg-accent text-white flex items-center justify-center rotate-45 transform shadow-xs shrink-0">
-                <span className="-rotate-45 font-bold text-xs sm:text-sm tracking-tight">V</span>
-              </div>
-              <span className="font-sans font-bold text-xs min-[360px]:text-sm sm:text-base md:text-lg tracking-[0.1em] min-[360px]:tracking-[0.2em] md:tracking-[0.25em] leading-none uppercase select-none text-current truncate">
-                VODIY KAFEL
-              </span>
-            </Link>
-          </div>
-
-          {/* 2. Center: Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-            {NAVIGATION_LINKS.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-[10px] xl:text-[11px] font-bold uppercase tracking-[0.18em] transition-all relative py-1 hover:text-accent ${
-                    isTransparent
-                      ? isActive ? 'text-white border-b-2 border-white' : 'text-white/70'
-                      : isActive ? 'text-accent border-b-2 border-accent' : 'text-text-primary'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          {/* 3. Right side: Search Input (desktop) & Action Buttons */}
-          <div className="flex items-center gap-1 sm:gap-2 md:gap-3 shrink-0">
-            {/* Search Input Bar (desktop only) */}
-            <form onSubmit={handleSearchSubmit} className="hidden md:flex items-center relative w-40 lg:w-48 xl:w-56">
-              <input
-                type="text"
-                placeholder="Qidiruv..."
-                value={searchVal}
-                onChange={(e) => setSearchVal(e.target.value)}
-                className={`w-full h-9 pl-4 pr-9 rounded-full text-xs transition-all focus:outline-none ${
-                  isTransparent
-                    ? 'border border-white/20 bg-white/10 text-white placeholder-white/50 focus:border-white focus:bg-white/15'
-                    : 'border border-border bg-bg-secondary text-text-primary placeholder-text-muted focus:border-accent focus:bg-white'
-                }`}
-              />
-              <button
-                type="submit"
-                className={`absolute right-3 top-1/2 -translate-y-1/2 transition-colors ${
-                  isTransparent ? 'text-white/60 hover:text-white' : 'text-text-muted hover:text-primary'
-                }`}
-                aria-label="Qidirish"
-              >
-                <Search className="w-3.5 h-3.5" />
-              </button>
-            </form>
-
-            {/* Quick Call */}
-            <a
-              href={`tel:${SITE_CONFIG.phonePrimary.replace(/\s+/g, '')}`}
-              className={`p-2 rounded-full transition-colors hover:bg-black/5 hidden sm:flex ${
-                isTransparent ? 'hover:bg-white/10 text-white' : 'hover:bg-bg-secondary text-text-primary'
-              }`}
-              title="Qo'ng'iroq qilish"
-            >
-              <Phone className="w-4 h-4" />
-            </a>
-
-            {/* Profile icon */}
-            <Link
-              href="/admin/dashboard"
-              className={`p-2 rounded-full transition-colors hover:bg-black/5 hidden sm:flex ${
-                isTransparent ? 'hover:bg-white/10 text-white' : 'hover:bg-bg-secondary text-text-primary'
-              }`}
-              title="Admin Panel"
-            >
-              <User className="w-4 h-4" />
-            </Link>
-
-            {/* Language indicator */}
-            <div
-              className={`hidden md:flex items-center gap-1 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                isTransparent ? 'bg-white/10 border border-white/20' : 'bg-bg-secondary border border-border'
-              }`}
-            >
-              <Globe className="w-3.5 h-3.5" />
-              <span>UZ</span>
             </div>
-
-            {/* Mobile Search Button */}
             <button
-              onClick={() => setIsMobileSearchOpen(true)}
-              className={`p-2 rounded-full sm:hidden transition-colors hover:bg-black/5 ${
-                isTransparent ? 'hover:bg-white/10 text-white' : 'hover:bg-bg-secondary text-text-primary'
-              }`}
-              aria-label="Qidirish"
+              type="submit"
+              className="h-12 px-5 bg-accent hover:bg-accent-hover text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all active:scale-95 flex items-center gap-1.5"
             >
-              <Search className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4" />
             </button>
-
-            {/* Cart Icon Drawer Trigger */}
             <button
-              onClick={() => {
-                const event = new CustomEvent('open-cart-drawer');
-                window.dispatchEvent(event);
-              }}
-              className={`p-2 rounded-full relative transition-colors hover:bg-black/5 ${
-                isTransparent ? 'hover:bg-white/10 text-white' : 'hover:bg-bg-secondary text-text-primary'
-              }`}
-              aria-label="Savat"
+              type="button"
+              onClick={() => setIsMobileSearchOpen(false)}
+              className="w-12 h-12 rounded-xl border border-border flex items-center justify-center text-text-secondary hover:bg-bg-secondary transition-all"
+              aria-label="Yopish"
             >
-              <ShoppingBag className="w-4 h-4" />
-              {mounted && totalItems > 0 && (
-                <span className="absolute top-0 right-0 bg-accent text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                  {totalItems}
-                </span>
-              )}
+              <X className="w-4 h-4" />
             </button>
-          </div>
+          </form>
         </div>
-      </header>
+      </div>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer */}
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
 
-      {/* Adjust page margin to header height (except on home page where hero starts on top) */}
-      {pathname !== '/' && <div className="h-16 md:h-24" />}
+      {/* Spacer */}
+      {pathname !== '/' && <div className="h-[66px] md:h-[74px]" />}
     </>
   );
 }
