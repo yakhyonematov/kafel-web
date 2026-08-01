@@ -55,10 +55,15 @@ export default function ProductDetailPage() {
   }, []);
 
   // Calculator states
-  const [area, setArea] = useState<number>(10);
   const [boxes, setBoxes] = useState<number>(1);
   const [calculatedArea, setCalculatedArea] = useState<number>(1);
   const [totalCost, setTotalCost] = useState<number>(0);
+
+  // Raw text mirrors of the two inputs above, kept separate from the numeric
+  // state so the field can sit genuinely empty while typing/clearing instead
+  // of the controlled input snapping back to a forced "0".
+  const [areaInput, setAreaInput] = useState<string>('10');
+  const [boxesInput, setBoxesInput] = useState<string>('1');
 
   // Load product and gallery details
   useEffect(() => {
@@ -78,6 +83,8 @@ export default function ProductDetailPage() {
 
         const initialBoxes = Math.ceil(10 / prodData.boxSize);
         setBoxes(initialBoxes);
+        setBoxesInput(String(initialBoxes));
+        setAreaInput('10');
         setCalculatedArea(Number((initialBoxes * prodData.boxSize).toFixed(2)));
         setTotalCost(initialBoxes * prodData.boxSize * prodData.price);
 
@@ -110,9 +117,9 @@ export default function ProductDetailPage() {
   // Recalculate area/boxes on input change
   const handleAreaChange = (val: number) => {
     if (!product || val < 0) return;
-    setArea(val);
     const calculatedBoxes = Math.ceil(val / product.boxSize);
     setBoxes(calculatedBoxes);
+    setBoxesInput(String(calculatedBoxes));
     setCalculatedArea(Number((calculatedBoxes * product.boxSize).toFixed(2)));
     setTotalCost(calculatedBoxes * product.boxSize * product.price);
   };
@@ -120,9 +127,38 @@ export default function ProductDetailPage() {
   const handleBoxesChange = (val: number) => {
     if (!product || val < 0) return;
     setBoxes(val);
-    setArea(Number((val * product.boxSize).toFixed(2)));
-    setCalculatedArea(Number((val * product.boxSize).toFixed(2)));
+    const newArea = Number((val * product.boxSize).toFixed(2));
+    setAreaInput(String(newArea));
+    setCalculatedArea(newArea);
     setTotalCost(val * product.boxSize * product.price);
+  };
+
+  // Input text handlers: mirror whatever the user types verbatim (including an
+  // empty field mid-edit) and only push a recalculation once it parses to a
+  // valid number — this is what stops a stray "0" from getting stuck as you type.
+  const handleAreaInputChange = (raw: string) => {
+    setAreaInput(raw);
+    if (raw === '') return;
+    const val = Number(raw);
+    if (Number.isNaN(val) || val < 0) return;
+    handleAreaChange(val);
+  };
+
+  const handleBoxesInputChange = (raw: string) => {
+    setBoxesInput(raw);
+    if (raw === '') return;
+    const val = Number(raw);
+    if (Number.isNaN(val) || val < 0) return;
+    handleBoxesChange(val);
+  };
+
+  // On blur, snap a left-empty or zeroed field back to a sane minimum of 1.
+  const handleAreaBlur = () => {
+    if (areaInput === '' || Number(areaInput) <= 0) handleAreaInputChange('1');
+  };
+
+  const handleBoxesBlur = () => {
+    if (boxesInput === '' || Number(boxesInput) <= 0) handleBoxesInputChange('1');
   };
 
   const handleAddToCart = () => {
@@ -410,8 +446,10 @@ export default function ProductDetailPage() {
                 </label>
                 <input
                   type="number"
-                  value={area}
-                  onChange={(e) => handleAreaChange(Number(e.target.value))}
+                  value={areaInput}
+                  onChange={(e) => handleAreaInputChange(e.target.value)}
+                  onBlur={handleAreaBlur}
+                  onFocus={(e) => e.target.select()}
                   min={1}
                   className="h-10 px-3.5 border border-border bg-white rounded-lg text-sm text-text-primary focus:outline-none focus:border-accent w-full font-medium"
                 />
@@ -423,8 +461,10 @@ export default function ProductDetailPage() {
                 </label>
                 <input
                   type="number"
-                  value={boxes}
-                  onChange={(e) => handleBoxesChange(Number(e.target.value))}
+                  value={boxesInput}
+                  onChange={(e) => handleBoxesInputChange(e.target.value)}
+                  onBlur={handleBoxesBlur}
+                  onFocus={(e) => e.target.select()}
                   min={1}
                   className="h-10 px-3.5 border border-border bg-white rounded-lg text-sm text-text-primary focus:outline-none focus:border-accent w-full font-medium"
                 />
