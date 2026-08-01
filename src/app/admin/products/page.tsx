@@ -7,8 +7,11 @@ import { Plus, Search, Edit2, Trash2, X, CheckCircle, Image as ImageIcon, Upload
 import { productService } from '../../../services/product.service';
 import { factoryService } from '../../../services/factory.service';
 import { uploadService } from '../../../services/upload.service';
+import { getImageUrl } from '../../../utils/image';
 import { Product, Factory, SurfaceType } from '../../../types';
 import { formatPrice, formatSurface } from '../../../lib/formatters';
+import { useScrollLock } from '../../../hooks/useScrollLock';
+import { useEscapeKey } from '../../../hooks/useEscapeKey';
 
 function AdminProductsCatalogContent() {
   const searchParams = useSearchParams();
@@ -47,18 +50,17 @@ function AdminProductsCatalogContent() {
   const [successMsg, setSuccessMsg] = useState('');
   const modalContentRef = useRef<HTMLDivElement>(null);
 
-  // Lock background scroll while the modal is open, and reset the modal's own
-  // scroll position so a long previous form doesn't leave you scrolled down.
+  // Lock background scroll (and pause Lenis, so wheel events reach the modal's
+  // own scrollable div instead of being captured by the smooth-scroll library).
+  useScrollLock(showModal);
+  useEscapeKey(showModal, () => setShowModal(false));
+
+  // Reset the modal's own scroll position so a long previous form doesn't
+  // leave you scrolled down when it reopens.
   useEffect(() => {
     if (showModal) {
-      document.body.style.overflow = 'hidden';
       modalContentRef.current?.scrollTo({ top: 0 });
-    } else {
-      document.body.style.overflow = '';
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
   }, [showModal]);
 
   // Load data
@@ -324,7 +326,7 @@ function AdminProductsCatalogContent() {
                   <tr key={p.id} className="text-text-primary hover:bg-bg-secondary/10">
                     <td className="py-3">
                       <img
-                        src={p.mainImage}
+                        src={getImageUrl(p.mainImage)}
                         alt={p.name}
                         className="w-11 h-11 object-cover rounded-lg border border-border bg-bg-secondary"
                       />
@@ -418,7 +420,8 @@ function AdminProductsCatalogContent() {
           <div className="fixed inset-0 bg-black/60 backdrop-blur-xs" onClick={() => setShowModal(false)} />
           <div
             ref={modalContentRef}
-            className="relative w-full max-w-[640px] bg-white rounded-3xl border border-border p-6 sm:p-8 shadow-2xl flex flex-col gap-5 my-8 animate-scale-up z-10 max-h-[90vh] overflow-y-auto"
+            data-lenis-prevent
+            className="relative w-full max-w-[640px] bg-white rounded-3xl border border-border p-6 sm:p-8 shadow-2xl flex flex-col gap-5 my-8 animate-scale-up z-10 max-h-[90vh] overflow-y-auto overscroll-contain"
           >
             <div className="flex justify-between items-center border-b border-border pb-3 shrink-0">
               <h3 className="font-sans font-bold text-lg text-text-primary">
@@ -631,7 +634,7 @@ function AdminProductsCatalogContent() {
                 <div className="flex items-center gap-3">
                   {mainImage ? (
                     <img
-                      src={mainImage}
+                      src={getImageUrl(mainImage)}
                       alt="Yuklangan rasm"
                       className="w-16 h-16 object-cover rounded-xl border border-border bg-bg-secondary shrink-0"
                     />

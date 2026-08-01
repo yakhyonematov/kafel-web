@@ -5,6 +5,7 @@ import { CheckCircle, Phone, MessageSquare, Trash2 } from 'lucide-react';
 import { orderService } from '../../../services/order.service';
 import { Order, OrderStatus } from '../../../types';
 import { formatPrice, formatDate } from '../../../lib/formatters';
+import { getImageUrl } from '../../../utils/image';
 
 const TABS: { label: string; value: OrderStatus }[] = [
   { label: 'Yangi', value: 'NEW' },
@@ -201,7 +202,7 @@ export default function AdminOrdersPage() {
                         {firstItem && (
                           <div className="flex items-center gap-2">
                             <img
-                              src={firstItem.product.mainImage}
+                              src={getImageUrl(firstItem.product.mainImage)}
                               alt={firstItem.product.name}
                               className="w-9 h-9 object-cover rounded-lg border border-border bg-bg-secondary shrink-0"
                             />

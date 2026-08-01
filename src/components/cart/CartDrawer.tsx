@@ -8,6 +8,7 @@ import { formatPrice } from '../../lib/formatters';
 import Link from 'next/link';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useEscapeKey } from '../../hooks/useEscapeKey';
+import { getImageUrl } from '../../utils/image';
 
 export default function CartDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -137,7 +138,7 @@ export default function CartDrawer() {
                     className="flex gap-4 border-b border-border-light pb-4 last:border-0 last:pb-0"
                   >
                     <img
-                      src={item.product.mainImage || '/uploads/sample_60x120.jpg'}
+                      src={getImageUrl(item.product.mainImage)}
                       alt={item.product.name}
                       className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg border border-border shrink-0 bg-bg-secondary"
                     />

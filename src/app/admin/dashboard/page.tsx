@@ -8,6 +8,7 @@ import { factoryService } from '../../../services/factory.service';
 import { galleryService } from '../../../services/gallery.service';
 import { Product, Factory as FactoryType } from '../../../types';
 import { formatPrice } from '../../../lib/formatters';
+import { getImageUrl } from '../../../utils/image';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -218,7 +219,7 @@ export default function AdminDashboard() {
                   <tr key={p.id} className="text-text-primary hover:bg-bg-secondary/20">
                     <td className="py-3">
                       <img
-                        src={p.mainImage}
+                        src={getImageUrl(p.mainImage)}
                         alt={p.name}
                         className="w-10 h-10 object-cover rounded-lg border border-border bg-bg-secondary"
                       />

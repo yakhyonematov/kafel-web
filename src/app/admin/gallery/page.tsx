@@ -5,7 +5,10 @@ import { Plus, Trash2, X, CheckCircle, Image as ImageIcon, Upload, Eye } from 'l
 import { productService } from '../../../services/product.service';
 import { galleryService } from '../../../services/gallery.service';
 import { uploadService } from '../../../services/upload.service';
+import { getImageUrl } from '../../../utils/image';
 import { Product, GalleryImage } from '../../../types';
+import { useScrollLock } from '../../../hooks/useScrollLock';
+import { useEscapeKey } from '../../../hooks/useEscapeKey';
 
 export default function AdminGalleryPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -20,6 +23,9 @@ export default function AdminGalleryPage() {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
+
+  useScrollLock(showModal);
+  useEscapeKey(showModal, () => setShowModal(false));
 
   // Load all products and gallery images
   async function loadData() {
@@ -175,7 +181,7 @@ export default function AdminGalleryPage() {
             >
               <div className="relative aspect-square w-full bg-bg-secondary overflow-hidden">
                 <img
-                  src={img.imageUrl}
+                  src={getImageUrl(img.imageUrl)}
                   alt={img.roomType || 'Galereya'}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -287,7 +293,7 @@ export default function AdminGalleryPage() {
                 <div className="flex items-center gap-3">
                   {imageUrl ? (
                     <img
-                      src={imageUrl}
+                      src={getImageUrl(imageUrl)}
                       alt="Galereya"
                       className="w-16 h-16 object-cover rounded-xl border border-border bg-bg-secondary shrink-0"
                     />

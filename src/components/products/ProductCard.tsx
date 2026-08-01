@@ -6,6 +6,7 @@ import { ShoppingCart } from 'lucide-react';
 import { Product } from '../../types';
 import { formatPrice, formatSurface } from '../../lib/formatters';
 import { useCartStore } from '../../store/useCartStore';
+import { getImageUrl } from '../../utils/image';
 
 interface ProductCardProps {
   product: Product;
@@ -45,7 +46,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Image Wrapper */}
       <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-bg-secondary border border-border-light/30">
         <img
-          src={product.mainImage || '/uploads/sample_60x120.jpg'}
+          src={getImageUrl(product.mainImage)}
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           loading="lazy"

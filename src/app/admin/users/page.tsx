@@ -7,6 +7,8 @@ import { authService } from '../../../services/auth.service';
 import { useAuthStore } from '../../../store/useAuthStore';
 import { User, Role } from '../../../types';
 import { formatDate } from '../../../lib/formatters';
+import { useScrollLock } from '../../../hooks/useScrollLock';
+import { useEscapeKey } from '../../../hooks/useEscapeKey';
 
 export default function AdminUsersPage() {
   const router = useRouter();
@@ -33,6 +35,9 @@ export default function AdminUsersPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [formError, setFormError] = useState('');
+
+  useScrollLock(showModal);
+  useEscapeKey(showModal, () => setShowModal(false));
 
   async function loadUsers() {
     try {

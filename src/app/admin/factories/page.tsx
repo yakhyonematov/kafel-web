@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { Plus, Search, Edit2, Trash2, X, PlusCircle, Factory as FactoryIcon, CheckCircle } from 'lucide-react';
 import { factoryService } from '../../../services/factory.service';
 import { Factory } from '../../../types';
+import { useScrollLock } from '../../../hooks/useScrollLock';
+import { useEscapeKey } from '../../../hooks/useEscapeKey';
 
 export default function AdminFactoriesPage() {
   const [factories, setFactories] = useState<Factory[]>([]);
@@ -18,6 +20,9 @@ export default function AdminFactoriesPage() {
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
+
+  useScrollLock(showModal);
+  useEscapeKey(showModal, () => setShowModal(false));
 
   // Fetch factories
   async function loadFactories() {

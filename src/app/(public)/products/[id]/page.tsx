@@ -24,6 +24,7 @@ import { useCartStore } from '../../../../store/useCartStore';
 import { useWishlistStore } from '../../../../store/useWishlistStore';
 import ProductCard from '../../../../components/products/ProductCard';
 import SectionTitle from '../../../../components/home/SectionTitle';
+import { getImageUrl } from '../../../../utils/image';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -73,7 +74,7 @@ export default function ProductDetailPage() {
         }
 
         setProduct(prodData);
-        setActiveImage(prodData.mainImage);
+        setActiveImage(getImageUrl(prodData.mainImage));
 
         const initialBoxes = Math.ceil(10 / prodData.boxSize);
         setBoxes(initialBoxes);
@@ -270,22 +271,22 @@ export default function ProductDetailPage() {
           {(gallery.length > 0 || product.mainImage) && (
             <div data-lenis-prevent className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
               <button
-                onClick={() => setActiveImage(product.mainImage)}
+                onClick={() => setActiveImage(getImageUrl(product.mainImage))}
                 className={`w-20 h-20 rounded-lg overflow-hidden border-2 shrink-0 bg-bg-secondary transition-all ${
-                  activeImage === product.mainImage ? 'border-accent scale-95 shadow-sm' : 'border-border/60 opacity-80 hover:opacity-100'
+                  activeImage === getImageUrl(product.mainImage) ? 'border-accent scale-95 shadow-sm' : 'border-border/60 opacity-80 hover:opacity-100'
                 }`}
               >
-                <img src={product.mainImage} alt={product.name} className="w-full h-full object-cover" />
+                <img src={getImageUrl(product.mainImage)} alt={product.name} className="w-full h-full object-cover" />
               </button>
               {gallery.map((img) => (
                 <button
                   key={img.id}
-                  onClick={() => setActiveImage(img.imageUrl)}
+                  onClick={() => setActiveImage(getImageUrl(img.imageUrl))}
                   className={`w-20 h-20 rounded-lg overflow-hidden border-2 shrink-0 bg-bg-secondary transition-all ${
-                    activeImage === img.imageUrl ? 'border-accent scale-95 shadow-sm' : 'border-border/60 opacity-80 hover:opacity-100'
+                    activeImage === getImageUrl(img.imageUrl) ? 'border-accent scale-95 shadow-sm' : 'border-border/60 opacity-80 hover:opacity-100'
                   }`}
                 >
-                  <img src={img.imageUrl} alt={img.roomType || 'Galereya'} className="w-full h-full object-cover" />
+                  <img src={getImageUrl(img.imageUrl)} alt={img.roomType || 'Galereya'} className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
@@ -303,10 +304,10 @@ export default function ProductDetailPage() {
                   <div
                     key={img.id}
                     className="relative aspect-square rounded-xl overflow-hidden border border-border/60 bg-bg-secondary group cursor-pointer"
-                    onClick={() => setActiveImage(img.imageUrl)}
+                    onClick={() => setActiveImage(getImageUrl(img.imageUrl))}
                   >
                     <img
-                      src={img.imageUrl}
+                      src={getImageUrl(img.imageUrl)}
                       alt={img.roomType || 'Galereya'}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
