@@ -1,0 +1,507 @@
+================================================================================
+  VODIY KAFEL SAVDO — FRONTEND QAYTA QURISH REJASI (v2.0)
+  Texnologiyalar: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4
+  Backend: NestJS + Prisma + PostgreSQL (mavjud, http://localhost:3000)
+================================================================================
+
+SAYT HAQIDA UMUMIY MA'LUMOT:
+- Farg'ona vodiysida kafel va keramogranit savdosi
+- Mavjud sayt: https://vodiykafelsavdo.uz (Tilda platformasida)
+- Maqsad: To'liq qayta qurish, premium dizayn, backend API bilan integratsiya
+- Font: Manrope (Google Fonts)
+- Telefon: +998 91 129 6666
+- Manzil: Farg'ona viloyati, Farg'ona shahar, Vatan ravnaqi 47-uy
+- Ish vaqti: 08:00 dan 17:00 gacha, Dushanba - Shanba
+
+
+================================================================================
+SAHIFALAR RO'YXATI (PAGES)
+================================================================================
+
+1. ASOSIY SAHIFA (Home Page) — "/"
+   - TopBar (ish vaqti, telefon, ijtimoiy tarmoqlar)
+   - Header/Navbar (logo, menyu, qidiruv, savat)
+   - Hero Banner (slider yoki katta banner)
+   - Kategoriyalar bo'limi (Glossy, Matte, Keramogranit)
+   - Mahsulotlar setkasi — "POL UCHUN" bo'limi (backend /products dan oladi)
+   - Sahifalash (pagination: 1, 2, ...)
+   - "SANUZEL VA OSHHONA DEVORLARI UCHUN" bo'limi (alohida filtr)
+   - FAQ Accordion bo'limi (4 ta savol-javob)
+   - Bog'lanish formasi (ism, telefon, izoh, rozilik checkbox)
+   - Footer (navigatsiya, kontaktlar, ijtimoiy tarmoqlar)
+
+2. MAHSULOTLAR KATALOGI (Products Catalog) — "/products"
+   - Chap panelda filtrlar:
+     * Zavod bo'yicha (GET /factories dan oladi)
+     * Sirt turi bo'yicha (GLOSSY / MATTE)
+     * Qo'llanilishi bo'yicha (Hammom, Sanuzel, Zal)
+     * O'lcham bo'yicha (60x60, 30x60, 60x120)
+     * Qidiruv matni (kod, nom, rang)
+   - O'ng tomonda mahsulotlar grid (GET /products dan oladi)
+   - Sahifalash (pagination)
+   - Saralash (narx bo'yicha, yangilik bo'yicha)
+
+3. MAHSULOT BATAFSIL SAHIFASI (Product Detail) — "/products/[id]"
+   - Katta rasm (mainImage) + galereya rasmlari (GET /gallery/product/:id)
+   - Mahsulot nomi, kodi, narxi
+   - Xarakteristikalar jadvali:
+     * O'lcham (size)
+     * Qalinlik (thickness)
+     * Rang (color)
+     * Sirt turi (surface: GLOSSY/MATTE)
+     * Qo'llanilishi (usage)
+     * Quti hajmi m² (boxSize)
+     * Ombor qoldig'i (stock)
+   - Zavod ma'lumoti (factory nomi, joylashuvi)
+   - "Savatga qo'shish" tugmasi (miqdor tanlash bilan)
+   - O'xshash mahsulotlar (Related Products)
+   - Bitgan ishlar galereyasi (GalleryImages — xona turi bilan)
+
+4. BIZ HAQIMIZDA (About Us) — "/about"
+   - Kompaniya tarixi va maqsadi
+   - Afzalliklar (birinchi sort kafellar, to'g'ridan-to'g'ri zavoddan)
+   - Raqamlar bilan (nechta zavod, nechta mahsulot, nechta mijoz)
+   - Jamoamiz (ixtiyoriy)
+
+5. KONTAKT (Contact) — "/contact"
+   - Aloqa ma'lumotlari:
+     * Telefon: +998 91 129 6666
+     * Manzil: Farg'ona viloyati, Farg'ona shahar, Vatan ravnaqi 47-uy
+     * Ish vaqti: 8:00 dan 17:00 gacha
+     * Ish kunlari: Dushanba - Shanba
+   - Xabar yuborish formasi (ism, telefon, izoh)
+   - Google Maps (lokatsiya)
+   - Ijtimoiy tarmoqlar havolalari
+
+6. FILIALLAR (Branches) — "/branches"
+   - Filiallar ro'yxati (kartochkalar bilan)
+   - Har bir filialning manzili, telefoni, ish vaqti
+   - Xarita integratsiyasi
+
+7. SAVAT (Cart) — Modal / Drawer
+   - Bo'sh holat: "Savatda hech narsa yo'q... Xarid qilishda davom etamizmi? Ooops..."
+     * "Katalogga qaytish" tugmasi
+   - To'la holat:
+     * Mahsulotlar ro'yxati (rasm, nom, kod, narx, miqdor)
+     * Miqdorni o'zgartirish (+/- tugmalari)
+     * Har bir mahsulotni o'chirish
+     * Umumiy summa
+   - Buyurtma berish formasi:
+     * Ismingiz
+     * Telefon raqam (+998 ...)
+     * Izoh
+     * "Ro'yxatdan o'tish" tugmasi
+     * Maxfiylik siyosati roziligi checkbox
+
+8. ADMIN LOGIN — "/admin/login"
+   - Username va parol kiritish
+   - POST /auth/login orqali JWT token olish
+   - Xato bo'lsa xabar ko'rsatish
+
+9. ADMIN DASHBOARD — "/admin/dashboard"
+   - Statistika: Jami mahsulotlar, Jami zavodlar, Faol/Faol emas mahsulotlar
+   - Oxirgi qo'shilgan mahsulotlar ro'yxati
+
+10. ADMIN MAHSULOTLAR — "/admin/products"
+    - Barcha mahsulotlar jadvali (GET /products/admin/all)
+    - Qidiruv va filtr
+    - Mahsulot qo'shish modal/sahifasi (POST /products + POST /upload/image)
+    - Mahsulot tahrirlash (PATCH /products/:id)
+    - Mahsulot o'chirish (DELETE /products/:id)
+    - Narx va stock tezkor yangilash
+
+11. ADMIN ZAVODLAR — "/admin/factories"
+    - Zavodlar ro'yxati (GET /factories)
+    - Zavod qo'shish (POST /factories)
+    - Zavod tahrirlash (PATCH /factories/:id)
+    - Zavod o'chirish (DELETE /factories/:id)
+
+12. ADMIN GALEREYA — "/admin/gallery"
+    - Mahsulotga rasm biriktirish (POST /gallery)
+    - Rasm o'chirish (DELETE /gallery/:id)
+    - Rasm yuklash (POST /upload/image)
+
+
+================================================================================
+KOMPONENTLAR RO'YXATI (COMPONENTS)
+================================================================================
+
+LAYOUT KOMPONENTLARI:
+  - TopBar          — Ish vaqti, telefon, ijtimoiy tarmoqlar linki
+  - Header/Navbar   — Logo, menyu, qidiruv, savat ikonkasi (badge bilan)
+  - MobileMenu      — Hamburger menyu (mobil qurilmalar uchun)
+  - Footer          — Navigatsiya, kontaktlar, forma, ijtimoiy tarmoqlar
+  - AdminSidebar    — Admin panel chap menyusi
+  - AdminHeader     — Admin panel yuqori paneli (profil, chiqish)
+
+ASOSIY SAHIFA KOMPONENTLARI:
+  - HeroBanner      — Katta banner/slider asosiy sarlavha va CTA tugmalar bilan
+  - CategoryTabs    — Kategoriya tanlovlari (Glossy, Matte, Keramogranit)
+  - ProductCard     — Mahsulot kartochkasi (rasm, nom, kod, o'lcham, narx, "Savatga" tugma)
+  - ProductGrid     — Mahsulotlar setkasi (kartochkalar grid ko'rinishi)
+  - SectionTitle    — Bo'lim sarlavhalari ("POL UCHUN", "SANUZEL VA OSHHONA...")
+  - FAQAccordion    — Savol-javob ochiluvchi bloklar
+  - FAQItem         — Bitta savol-javob elementi
+  - ContactForm     — Bog'lanish/Buyurtma formasi
+
+KATALOG KOMPONENTLARI:
+  - ProductFilter   — Filtr paneli (zavod, sirt, qo'llanilish, o'lcham, qidiruv)
+  - ProductSort     — Saralash tugmalari
+  - Pagination      — Sahifalash (1, 2, 3, ...)
+  - ActiveFilters   — Tanlangan filtrlar chipi (olib tashlash imkoni bilan)
+
+MAHSULOT DETAIL KOMPONENTLARI:
+  - ProductGallery  — Katta rasm + kichik thumbnaills
+  - ProductInfo     — Nom, kod, narx, xarakteristikalar
+  - ProductSpecs    — Texnik xarakteristikalar jadvali
+  - QuantitySelector — Miqdor tanlash (+/- tugmalari)
+  - RelatedProducts — O'xshash mahsulotlar karuseli
+  - RoomGallery     — Bitgan ishlar rasmlari (xona turi bilan)
+  - AddToCartButton — "Savatga qo'shish" tugmasi
+
+SAVAT KOMPONENTLARI:
+  - CartDrawer      — Savat drawer/modal
+  - CartItem        — Savatdagi bitta mahsulot qatori
+  - CartEmpty       — Bo'sh savat holati ("Ooops...")
+  - CartSummary     — Umumiy summa va buyurtma berish
+  - OrderForm       — Buyurtma formasi (ism, telefon, izoh)
+
+UI KOMPONENTLARI (Umumiy):
+  - Button          — Turli xil tugmalar (primary, secondary, outline, ghost)
+  - Input           — Matnli kiritish maydoni
+  - PhoneInput      — Telefon raqam kiritish (+998 mask bilan)
+  - Modal           — Modal oyna
+  - Badge           — Kichik yorliqlar (GLOSSY, MATTE, YANGI, va h.k.)
+  - Accordion       — Ochiluvchi/yopiluvchi blok
+  - Skeleton        — Yuklanish holati (loading placeholder)
+  - Toast           — Bildirishnoma xabarlari (muvaffaqiyat, xato)
+  - Breadcrumb      — "Asosiy > Mahsulotlar > HS 01002" navigatsiya
+  - SearchBar       — Qidiruv maydoni
+  - Checkbox        — Belgilash katakchasi
+  - Select          — Tanlash ro'yxati
+
+ADMIN KOMPONENTLARI:
+  - DataTable       — Admin jadval (saralash, qidiruv, sahifalash bilan)
+  - StatsCard       — Statistika kartochkasi (raqam + icon + sarlavha)
+  - FormField       — Admin form maydoni (label + input + validatsiya xato matni)
+  - ImageUploader   — Rasm yuklash komponenti (drag-drop, preview)
+  - ConfirmDialog   — Tasdiqlash dialogi (o'chirish operatsiyalari uchun)
+  - AdminProductForm — Mahsulot qo'shish/tahrirlash to'liq formasi
+
+
+================================================================================
+PAPKALAR VA FAYLLAR TUZILISHI (FOLDER STRUCTURE)
+================================================================================
+
+web/src/
+├── app/
+│   ├── layout.tsx                    # Root layout (TopBar, Header, Footer)
+│   ├── page.tsx                      # Asosiy sahifa (Home)
+│   ├── globals.css                   # Global CSS + Tailwind
+│   │
+│   ├── products/
+│   │   ├── page.tsx                  # Mahsulotlar katalogi
+│   │   └── [id]/
+│   │       └── page.tsx              # Mahsulot batafsil sahifasi
+│   │
+│   ├── about/
+│   │   └── page.tsx                  # Biz haqimizda
+│   │
+│   ├── contact/
+│   │   └── page.tsx                  # Kontakt sahifasi
+│   │
+│   ├── branches/
+│   │   └── page.tsx                  # Filiallar sahifasi
+│   │
+│   └── admin/
+│       ├── layout.tsx                # Admin layout (Sidebar, AdminHeader)
+│       ├── login/
+│       │   └── page.tsx              # Admin login
+│       ├── dashboard/
+│       │   └── page.tsx              # Admin bosh sahifa
+│       ├── products/
+│       │   └── page.tsx              # Admin mahsulotlar boshqaruvi
+│       ├── factories/
+│       │   └── page.tsx              # Admin zavodlar boshqaruvi
+│       └── gallery/
+│           └── page.tsx              # Admin galereya boshqaruvi
+│
+├── components/
+│   ├── layout/
+│   │   ├── TopBar.tsx
+│   │   ├── Header.tsx
+│   │   ├── MobileMenu.tsx
+│   │   ├── Footer.tsx
+│   │   ├── AdminSidebar.tsx
+│   │   └── AdminHeader.tsx
+│   │
+│   ├── home/
+│   │   ├── HeroBanner.tsx
+│   │   ├── CategoryTabs.tsx
+│   │   ├── SectionTitle.tsx
+│   │   ├── FAQAccordion.tsx
+│   │   ├── FAQItem.tsx
+│   │   └── ContactForm.tsx
+│   │
+│   ├── products/
+│   │   ├── ProductCard.tsx
+│   │   ├── ProductGrid.tsx
+│   │   ├── ProductFilter.tsx
+│   │   ├── ProductSort.tsx
+│   │   ├── ProductGallery.tsx
+│   │   ├── ProductInfo.tsx
+│   │   ├── ProductSpecs.tsx
+│   │   ├── RelatedProducts.tsx
+│   │   ├── RoomGallery.tsx
+│   │   └── ActiveFilters.tsx
+│   │
+│   ├── cart/
+│   │   ├── CartDrawer.tsx
+│   │   ├── CartItem.tsx
+│   │   ├── CartEmpty.tsx
+│   │   ├── CartSummary.tsx
+│   │   └── OrderForm.tsx
+│   │
+│   ├── admin/
+│   │   ├── DataTable.tsx
+│   │   ├── StatsCard.tsx
+│   │   ├── FormField.tsx
+│   │   ├── ImageUploader.tsx
+│   │   ├── ConfirmDialog.tsx
+│   │   └── AdminProductForm.tsx
+│   │
+│   └── ui/
+│       ├── Button.tsx
+│       ├── Input.tsx
+│       ├── PhoneInput.tsx
+│       ├── Modal.tsx
+│       ├── Badge.tsx
+│       ├── Accordion.tsx
+│       ├── Skeleton.tsx
+│       ├── Toast.tsx
+│       ├── Breadcrumb.tsx
+│       ├── SearchBar.tsx
+│       ├── Checkbox.tsx
+│       ├── Select.tsx
+│       ├── Pagination.tsx
+│       ├── QuantitySelector.tsx
+│       └── AddToCartButton.tsx
+│
+├── services/
+│   ├── api.ts                        # Axios/Fetch base client (baseURL, interceptors)
+│   ├── auth.service.ts               # login, register, getProfile
+│   ├── product.service.ts            # getProducts, getProductById, getProductByCode
+│   ├── factory.service.ts            # getFactories, getFactoryById
+│   ├── gallery.service.ts            # getGalleryByProduct
+│   └── upload.service.ts             # uploadImage
+│
+├── store/
+│   ├── useCartStore.ts               # Savat holati (Zustand yoki Context)
+│   ├── useAuthStore.ts               # Admin auth holati (token, user)
+│   └── useFilterStore.ts             # Katalog filtr holati
+│
+├── types/
+│   └── index.ts                      # TypeScript interfeyslari
+│                                     # Product, Factory, GalleryImage, User,
+│                                     # SurfaceType enum, FilterParams, CartItem,
+│                                     # PaginatedResponse, LoginRequest, LoginResponse
+│
+├── constants/
+│   ├── site.ts                       # Kompaniya ma'lumotlari (tel, manzil, ish vaqti)
+│   ├── faq.ts                        # FAQ savol-javoblar ro'yxati
+│   └── navigation.ts                 # Menyu elementlari
+│
+├── hooks/
+│   ├── useProducts.ts                # Mahsulotlar fetch hook
+│   ├── useFactories.ts               # Zavodlar fetch hook
+│   └── useMediaQuery.ts              # Responsive breakpoint hook
+│
+└── lib/
+    ├── utils.ts                      # Yordamchi funksiyalar (formatPrice, cn va h.k.)
+    └── formatters.ts                 # Narx formatlash (51 900 UZS), sana formatlash
+
+
+================================================================================
+TASKLAR REJASI (BOSQICHLAR)
+================================================================================
+
+------- TASK 1: LOYIHA SOZLASH VA ASOSIY INFRATUZILMA -------
+1.1  Next.js loyihasiga kerakli paketlarni o'rnatish (zustand, lucide-react,
+     axios yoki swr/react-query)
+1.2  Tailwind CSS 4 konfiguratsiyasini tekshirish va ranglar palitrasini sozlash
+1.3  Google Fonts — Manrope fontini ulash
+1.4  src/types/index.ts — TypeScript interfeyslari (Product, Factory, SurfaceType,
+     GalleryImage, User, CartItem, PaginatedResponse)
+1.5  src/services/api.ts — Base API client (baseURL: http://localhost:3000)
+1.6  src/services/ barcha service fayllarini yaratish
+1.7  src/constants/ fayllarini yaratish (site, faq, navigation)
+1.8  src/lib/utils.ts va formatters.ts — yordamchi funksiyalar
+1.9  src/store/ — Zustand store'larni yaratish (cart, auth, filter)
+
+------- TASK 2: LAYOUT KOMPONENTLARI (Header, Footer) -------
+2.1  TopBar komponenti — ish vaqti, telefon, ijtimoiy tarmoqlar
+2.2  Header/Navbar — logo, menyu, qidiruv ikonka, savat tugmasi (badge)
+2.3  MobileMenu — hamburger menyu (mobil responsive)
+2.4  Footer — navigatsiya, kontaktlar, ijtimoiy tarmoqlar, mini aloqa formasi
+2.5  app/layout.tsx — Root layout (TopBar + Header + {children} + Footer)
+
+------- TASK 3: UI KOMPONENTLAR KUTUBXONASI -------
+3.1  Button komponenti (primary, secondary, outline, ghost, icon)
+3.2  Input komponenti (label, placeholder, error state)
+3.3  PhoneInput komponenti (+998 mask bilan)
+3.4  Modal komponenti (overlay, animatsiya)
+3.5  Badge komponenti (GLOSSY, MATTE, YANGI, rang variatsiyalari)
+3.6  Accordion komponenti (savol-javob uchun)
+3.7  Skeleton komponenti (loading holat)
+3.8  Toast komponenti (bildirishnomalar)
+3.9  Breadcrumb komponenti
+3.10 SearchBar komponenti
+3.11 Pagination komponenti
+3.12 QuantitySelector komponenti (+/- tugmalari)
+3.13 Checkbox, Select komponentlari
+
+------- TASK 4: ASOSIY SAHIFA (HOME PAGE) -------
+4.1  HeroBanner — jozibali katta banner, sarlavha, taglavha, CTA tugmalar
+     Matnlar:
+     - "Eng sifatli kafellar va keramika plitkalari - to'g'ridan-to'g'ri zavoddan!"
+     - "Farg'ona vodiysida yetakchi kafel savdosi"
+     - "Uy, ofis va istalgan joylar uchun yuzlab dizaynlar!"
+     - "O'zbekiston bo'ylab"
+4.2  CategoryTabs — POL UCHUN (60x60) va DEVOR UCHUN (30x60) tab toggle
+4.3  ProductGrid + ProductCard — backenddan olingan mahsulotlar kartochkalar
+     sifatida ko'rsatish (rasm, nom, kod, o'lcham, narx)
+4.4  SectionTitle — "SANUZEL VA OSHHONA DEVORLARI UCHUN"
+     Taglavha: "Sizda ajoyib tanlov bor", "Bizda faqat birinchi sort kafellar"
+4.5  Pagination — sahifalar o'rtasida o'tish
+4.6  FAQAccordion — 4 ta savol-javob:
+     S1: "Agar mahsulot siniq holda chiqsa, almashtirish imkoni bormi?"
+         J: "Albatta! Agar mahsulot yetkazib berishda yoki sotib olinganida
+             siniq bo'lsa, uni almashtirib beramiz."
+     S2: "Sotib olingan, lekin ishlatilmagan kafel va mahsulotlarni qaytarish
+          imkoni bormi?"
+         J: "Agar mahsulot ortib qolsa, uni 20 kun ichida qaytarishingiz mumkin."
+     S3: "Qanday to'lov usullari mavjud?"
+         J: "Siz istagan to'lov turlari mavjud: naqd pul, plastik karta
+             va bank o'tkazmasi (perechisleniya)."
+     S4: "Agar mahsulot yetmay qolsa, nima qilishim kerak?"
+         J: "Xavotir olmang, biz sizga kerakli mahsulotni topib beramiz!"
+4.7  ContactForm — bog'lanish formasi (ism, telefon, izoh, rozilik)
+4.8  Home page yakuniy yig'ish (app/page.tsx)
+
+------- TASK 5: MAHSULOTLAR KATALOGI -------
+5.1  ProductFilter — chap panel filtrlar (zavod, sirt turi, qo'llanilish, qidiruv)
+5.2  ProductSort — saralash (narx arzon-qimmat, yangilik bo'yicha)
+5.3  ActiveFilters — tanlangan filtrlar chiplari
+5.4  Katalog sahifasi (app/products/page.tsx) — filtr + grid + pagination
+5.5  Responsive dizayn (mobilda filtr modal/drawer)
+
+------- TASK 6: MAHSULOT BATAFSIL SAHIFASI -------
+6.1  ProductGallery — asosiy rasm + galereya thumbnaills (zoom effekti)
+6.2  ProductInfo — nom, kod, narx, badge'lar
+6.3  ProductSpecs — texnik xarakteristikalar jadvali
+6.4  AddToCartButton + QuantitySelector
+6.5  RoomGallery — bitgan ishlar rasmlari (xona turi bilan)
+6.6  RelatedProducts — o'xshash mahsulotlar
+6.7  Batafsil sahifa (app/products/[id]/page.tsx) — hammasini yig'ish
+6.8  Breadcrumb integratsiyasi
+
+------- TASK 7: SAVAT (CART) FUNKSIONALLIGI -------
+7.1  useCartStore — savat holat boshqaruvi (qo'shish, o'chirish, miqdor,
+     umumiy summa)
+7.2  CartDrawer — drawer/modal oyna
+7.3  CartItem — mahsulot qatori (rasm, nom, narx, miqdor, o'chirish)
+7.4  CartEmpty — bo'sh holat ("Savatda hech narsa yo'q... Ooops...")
+7.5  CartSummary — umumiy summa
+7.6  OrderForm — buyurtma formasi (ism, telefon, izoh, maxfiylik checkbox)
+7.7  Header'dagi savat ikonkasiga badge va CartDrawer ochish ulash
+
+------- TASK 8: BIZ HAQIMIZDA, KONTAKT, FILIALLAR SAHIFALARI -------
+8.1  About sahifasi (app/about/page.tsx) — kompaniya haqida, afzalliklar, raqamlar
+8.2  Contact sahifasi (app/contact/page.tsx) — aloqa ma'lumotlari, forma, xarita
+8.3  Branches sahifasi (app/branches/page.tsx) — filiallar kartochkalari, xarita
+
+------- TASK 9: ADMIN PANEL -------
+9.1  Admin layout (app/admin/layout.tsx) — sidebar + header
+9.2  AdminSidebar — menyu (Dashboard, Mahsulotlar, Zavodlar, Galereya, Chiqish)
+9.3  AdminHeader — profil, chiqish tugmasi
+9.4  Login sahifasi (app/admin/login/page.tsx) — POST /auth/login
+9.5  useAuthStore — token saqlash, auth holati, middleware
+9.6  Auth middleware — admin sahifalarni himoyalash (token yo'q = login ga redirect)
+9.7  Dashboard sahifasi — StatsCard (jami mahsulot, zavod, faol/nofaol)
+9.8  DataTable komponenti — universal jadval (saralash, qidiruv, sahifalash)
+
+------- TASK 10: ADMIN MAHSULOTLAR BOSHQARUVI -------
+10.1 Admin mahsulotlar sahifasi — DataTable (GET /products/admin/all)
+10.2 AdminProductForm — to'liq forma (barcha maydonlar + rasm yuklash)
+10.3 ImageUploader — drag-drop rasm yuklash (POST /upload/image)
+10.4 Mahsulot qo'shish (POST /products)
+10.5 Mahsulot tahrirlash (PATCH /products/:id)
+10.6 Mahsulot o'chirish (DELETE /products/:id) + ConfirmDialog
+10.7 Stock va narx tezkor yangilash
+
+------- TASK 11: ADMIN ZAVODLAR VA GALEREYA BOSHQARUVI -------
+11.1 Zavodlar sahifasi — ro'yxat, qo'shish, tahrirlash, o'chirish
+11.2 Galereya boshqaruvi — mahsulotga rasm biriktirish, o'chirish
+
+------- TASK 12: YAKUNIY POLISHING VA OPTIMALLASHTIRISH -------
+12.1 SEO — meta taglar, title, description, Open Graph barcha sahifalarda
+12.2 Responsive dizaynni tekshirish (mobile, tablet, desktop)
+12.3 Loading holatlar — Skeleton komponentlari
+12.4 Error holatlar — 404, server xatoliklari
+12.5 Animatsiyalar va micro-interactions
+12.6 Rasm optimizatsiya (Next.js Image komponenti, lazy loading)
+12.7 Performance — code splitting, dynamic import
+
+
+================================================================================
+API ENDPOINT XARITASI (Backend bilan bog'lanish)
+================================================================================
+
+OCHIQ (Public) API'lar — token kerak emas:
+  GET  /factories              — Barcha zavodlar ro'yxati
+  GET  /factories/:id          — Bitta zavod + uning mahsulotlari
+  GET  /products               — Kafellar katalogi (filtr, qidiruv, sahifalash)
+  GET  /products/:id           — Bitta kafel to'liq ma'lumot
+  GET  /products/code/:code    — Kod bo'yicha qidiruv
+  GET  /gallery/product/:id    — Mahsulot galereya rasmlari
+  POST /auth/login             — Tizimga kirish
+
+YOPIQ (Admin) API'lar — JWT token kerak:
+  GET  /auth/me                — Profil olish
+  POST /auth/register          — Yangi admin/menejer
+  POST /products               — Mahsulot qo'shish
+  PATCH /products/:id          — Mahsulot tahrirlash
+  DELETE /products/:id         — Mahsulot o'chirish
+  GET  /products/admin/all     — Admin uchun barcha mahsulotlar
+  POST /factories              — Zavod qo'shish
+  PATCH /factories/:id         — Zavod tahrirlash
+  DELETE /factories/:id        — Zavod o'chirish
+  POST /gallery                — Galereya rasm qo'shish
+  DELETE /gallery/:id          — Galereya rasm o'chirish
+  POST /upload/image           — Rasm yuklash (multipart/form-data)
+
+
+================================================================================
+DIZAYN QARORLARI (UI/UX bo'yicha kelishishimiz kerak)
+================================================================================
+
+1. Ranglar palitrasi — qanday rang sxemasi yoqadi?
+   a) Toza oq + to'q kulrang + oltin/yashil accent (hozirgi saytga yaqin)
+   b) To'q qora/kulrang premium tema + oltin accent
+   c) Zamonaviy ko'k-oq ton + yumshoq gradientlar
+   d) Boshqa variant
+
+2. Header uslubi — qanday bo'lsin?
+   a) Fixed (har doim yuqorida turadi, scroll bo'lganda)
+   b) Scroll bo'lganda yashirinadi, yuqoriga qaytganda ko'rinadi
+
+3. Mahsulot kartochkasi dizayni
+   a) Oddiy — rasm + nom + narx
+   b) Premium — hover effektlar, soya, badge, tezkor ko'rish
+
+4. Savat — qayerda ko'rinsin?
+   a) O'ng tomondan drawer (silliq chiqadi)
+   b) Alohida sahifa (/cart)
+   c) Modal oyna
+
+================================================================================

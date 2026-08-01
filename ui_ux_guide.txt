@@ -1,0 +1,746 @@
+================================================================================
+  VODIY KAFEL SAVDO — UI/UX DIZAYN QO'LLANMASI (Design System Guide)
+  Dunyo yetakchi kafel saytlari asosida: Porcelanosa, Marazzi, Atlas Concorde
+  O'zbekiston bozori uchun moslashtirilgan
+================================================================================
+
+
+================================================================================
+1. ILHOM MANBALAR (INSPIRATION REFERENCES)
+================================================================================
+
+Dunyo bo'ylab eng yaxshi kafel/keramika saytlari tahlil qilindi:
+
+PORCELANOSA (porcelanosa.com):
+  - Minimalist oq fon + to'q matn
+  - Katta formatli rasm bannerlari
+  - "Product Finder" ilg'or filtr tizimi
+  - Juda toza, professional ko'rinish
+
+ATLAS CONCORDE (atlasconcorde.com):
+  - Premium qora/to'q kulrang tema
+  - Lifestyle fotografiya (kafel xonalarda qanday ko'rinishini ko'rsatadi)
+  - Katta tipografiya + keng oq bo'shliq (whitespace)
+  - "Made in Italy" premium his
+
+MARAZZI (marazzigroup.com):
+  - Iliq, tabiiy ranglar (qum, tuproq tonlari)
+  - Interaktiv katalog, zoom effektlar
+  - Trend-setting dizayn, koleksiyalar bo'yicha saralash
+
+O'ZBEKISTON BOZORI UCHUN QO'SHIMCHA TALABLAR:
+  - Narxlar aniq va katta ko'rinishi kerak (UZB mijoz narxni birinchi qaraydi)
+  - O'zbek tilida to'liq lokalizatsiya
+  - Telegram integratsiyasi (UZBda eng keng tarqalgan messenger)
+  - Tez yuklanish (3 sekunddan kam)
+  - Mobil-birinchi (mobile-first) — UZBda 70%+ trafik mobildan
+  - Oddiy va tushunarli navigatsiya (murakkab menyu UZB mijozni chalkashtirib qo'yadi)
+  - Ishonch belgilari: telefon raqam ko'rinib tursin, WhatsApp/Telegram tugmalari
+  - To'lov usullari aniq: naqd, plastik karta, perechisleniye
+
+
+================================================================================
+2. RANGLAR PALITRASI (COLOR PALETTE)
+================================================================================
+
+ASOSIY RANGLAR (Primary):
+  --color-primary:          #2C2C2C    Qora-kulrang (asosiy matn, sarlavhalar)
+  --color-primary-dark:     #1A1A1A    To'q qora (header, footer fon)
+  --color-primary-light:    #4A4A4A    Och kulrang matn
+
+AKSENT RANG (Accent — CTA tugmalar, faol holatlar):
+  --color-accent:           #C8956C    Iliq oltin-bronza (kafel/mermer hissi)
+  --color-accent-hover:     #B37D54    Tugma hover holati
+  --color-accent-light:     #F5EDE5    Och bronza fon (badge, highlight)
+  --color-accent-dark:      #9E7352    Bosish holati
+
+NEYTRAL RANGLAR (Neutrals — fon, chegaralar):
+  --color-bg-primary:       #FFFFFF    Asosiy oq fon
+  --color-bg-secondary:     #F8F6F3    Iliq krem/sut rang fon (seksiyalar uchun)
+  --color-bg-tertiary:      #F0ECE6    Uchinchi fon (filtr panel, sidebar)
+  --color-bg-dark:          #1A1A1A    To'q fon (hero, footer)
+  --color-bg-card:          #FFFFFF    Kartochka fon
+
+CHEGARA RANGLARI (Borders):
+  --color-border:           #E8E4DF    Asosiy chegara (kartochkalar, input)
+  --color-border-light:     #F0ECE6    Engil chegara
+  --color-border-hover:     #C8956C    Hover holatida chegara rangi
+
+MATN RANGLARI (Text):
+  --color-text-primary:     #1A1A1A    Asosiy matn
+  --color-text-secondary:   #6B6560    Ikkinchi darajali matn (tavsiflar)
+  --color-text-muted:       #9B9590    O'chgan matn (placeholder, meta)
+  --color-text-inverse:     #FFFFFF    Oq matn (to'q fon ustida)
+  --color-text-accent:      #C8956C    Aksent matn (narxlar, linklar)
+
+HOLAT RANGLARI (Status):
+  --color-success:          #4CAF50    Muvaffaqiyat (yashil)
+  --color-success-light:    #E8F5E9    Muvaffaqiyat fon
+  --color-warning:          #FF9800    Ogohlantirish (to'q sariq)
+  --color-warning-light:    #FFF3E0    Ogohlantirish fon
+  --color-error:            #EF4444    Xato (qizil)
+  --color-error-light:      #FEE2E2    Xato fon
+
+GRADIENT KOMBINATSIYALARI:
+  Hero overlay:     linear-gradient(to bottom, rgba(26,26,26,0.3), rgba(26,26,26,0.8))
+  Card hover:       linear-gradient(135deg, #F8F6F3 0%, #FFFFFF 100%)
+  CTA button:       linear-gradient(135deg, #C8956C 0%, #B37D54 100%)
+  Footer:           linear-gradient(to bottom, #1A1A1A, #111111)
+
+NIMA UCHUN BU RANGLAR?
+  - Iliq bronza/oltin ton = kafel, mermer, tabiiy tosh atmosferasini beradi
+  - Oq + krem fon = toza, professional, premium ko'rinish
+  - To'q qora/kulrang = ishonchlilik, jiddiylik hissi
+  - O'zbekiston bozori: Haddan tashqari rang ishlatmaslik kerak,
+    oddiy va tushunarli bo'lishi muhim
+
+
+================================================================================
+3. TIPOGRAFIYA (TYPOGRAPHY)
+================================================================================
+
+FONT OILASI:
+  Asosiy:    'Manrope', sans-serif (Google Fonts — hozirgi saytda ishlatiladi)
+  Yordamchi: system-ui, -apple-system, 'Segoe UI', sans-serif (fallback)
+
+FONT O'LCHAMLARI (8px grid asosida, clamp() bilan responsive):
+
+  DISPLAY (Hero sarlavha):
+    font-size:    clamp(32px, 5vw, 56px)
+    font-weight:  700
+    line-height:  1.1
+    letter-spacing: -0.02em
+
+  H1 (Sahifa sarlavhasi):
+    font-size:    clamp(28px, 4vw, 40px)
+    font-weight:  700
+    line-height:  1.2
+    letter-spacing: -0.01em
+
+  H2 (Bo'lim sarlavhasi):
+    font-size:    clamp(22px, 3vw, 32px)
+    font-weight:  600
+    line-height:  1.25
+
+  H3 (Kichik sarlavha):
+    font-size:    clamp(18px, 2.5vw, 24px)
+    font-weight:  600
+    line-height:  1.3
+
+  H4 (Kartochka sarlavhasi):
+    font-size:    18px
+    font-weight:  600
+    line-height:  1.4
+
+  BODY (Asosiy matn):
+    font-size:    16px (mobilda ham 16px — UZB mijoz uchun o'qish oson)
+    font-weight:  400
+    line-height:  1.6
+
+  BODY SMALL:
+    font-size:    14px
+    font-weight:  400
+    line-height:  1.5
+
+  CAPTION (Meta matn, label):
+    font-size:    12px
+    font-weight:  500
+    line-height:  1.4
+    text-transform: uppercase
+    letter-spacing: 0.05em
+
+  PRICE (Narx — UZB uchun katta va aniq):
+    font-size:    clamp(18px, 2.5vw, 24px)
+    font-weight:  700
+    line-height:  1.2
+    color:        var(--color-text-primary)
+
+
+================================================================================
+4. BO'SHLIQ TIZIMI — 8px GRID (SPACING SYSTEM)
+================================================================================
+
+Barcha margin, padding, gap qiymatlari 8px ning ko'paytmalari:
+
+  --space-0:     0px
+  --space-1:     4px       (Sub-grid: juda kichik oraliq)
+  --space-2:     8px       (Kichik ichki oraliq)
+  --space-3:     12px      (Matn oralig'i)
+  --space-4:     16px      (Kartochka ichki padding)
+  --space-5:     20px
+  --space-6:     24px      (Komponentlar oralig'i)
+  --space-7:     32px      (Bo'limlar oralig'i)
+  --space-8:     40px
+  --space-9:     48px      (Katta bo'lim pastki/yuqori margin)
+  --space-10:    56px
+  --space-11:    64px      (Seksiya padding)
+  --space-12:    80px      (Katta seksiya oralig'i)
+  --space-13:    96px
+  --space-14:    112px
+  --space-15:    128px     (Hero section padding)
+
+QO'LLANISH QOIDALARI:
+  Kartochka ichki padding:          16px — 20px
+  Kartochkalar orasidagi gap:       16px (mobil), 24px (desktop)
+  Seksiyalar orasidagi padding:     64px (mobil), 96px–128px (desktop)
+  Input ichki padding:              12px 16px
+  Button ichki padding:             12px 24px (standart), 16px 32px (katta)
+  Container max-width:              1200px
+  Container yon padding:            16px (mobil), 24px (planshet), 0px (desktop)
+
+
+================================================================================
+5. BORDER-RADIUS (BURCHAK YUMALOQLIGI)
+================================================================================
+
+  --radius-none:    0px       (To'g'ri burchak — jadval, ba'zi input)
+  --radius-sm:      4px       (Kichik elementlar: badge, chip, tag)
+  --radius-md:      8px       (Input, select, textarea)
+  --radius-lg:      12px      (Kartochkalar, modal, dropdown)
+  --radius-xl:      16px      (Katta kartochkalar, banner)
+  --radius-2xl:     20px      (Hero burchaklari, katta modal)
+  --radius-pill:    9999px    (Pill/capsule shakl: tugmalar, tab, badge)
+  --radius-circle:  50%       (Avatar, ikon tugma)
+
+QO'LLANISH XARITASI:
+  Button (standart):        8px (--radius-md)
+  Button (pill):            9999px (--radius-pill)
+  Input/Select:             8px (--radius-md)
+  Mahsulot kartochkasi:     12px (--radius-lg)
+  Kartochka ichidagi rasm:  8px yoki 12px yuqori burchaklar
+  Modal oyna:               16px (--radius-xl)
+  Badge/Tag:                4px (--radius-sm) yoki 9999px (pill)
+  Navbar (floating):        16px–20px (--radius-xl / --radius-2xl)
+  FAQ accordion:            12px (--radius-lg)
+  Avatar/ikon:              50% (--radius-circle)
+  Hero banner:              0px (to'liq ekran) yoki 20px (kartochka uslubida)
+
+
+================================================================================
+6. SOYA TIZIMI (SHADOWS)
+================================================================================
+
+  --shadow-none:    none
+  --shadow-xs:      0px 1px 2px rgba(0,0,0,0.04)
+  --shadow-sm:      0px 2px 4px rgba(0,0,0,0.06)
+  --shadow-md:      0px 4px 8px rgba(0,0,0,0.08)
+  --shadow-lg:      0px 8px 16px rgba(0,0,0,0.10)
+  --shadow-xl:      0px 12px 24px rgba(0,0,0,0.12)
+  --shadow-2xl:     0px 20px 40px rgba(0,0,0,0.15)
+
+  Iliq soya (kartochkalar uchun):
+  --shadow-warm:    0px 4px 12px rgba(200,149,108,0.12)
+
+QO'LLANISH:
+  Navbar (floating):        --shadow-md
+  Mahsulot kartochkasi:     --shadow-sm (normal), --shadow-lg (hover)
+  Modal/Drawer:             --shadow-2xl
+  Dropdown menyu:           --shadow-lg
+  Input (focus):            0px 0px 0px 3px rgba(200,149,108,0.2)
+  Button (hover):           --shadow-md
+  FAQAccordion:             --shadow-xs
+
+
+================================================================================
+7. BUTTON USLUBLARI (BUTTON STYLES)
+================================================================================
+
+UMUMIY QOIDALAR:
+  font-family:      'Manrope', sans-serif
+  font-weight:      600
+  border-radius:    8px (standart) yoki 9999px (pill)
+  cursor:           pointer
+  transition:       all 0.25s ease
+  outline:          none
+  border:           none (primary), 1.5px solid (outline)
+
+PRIMARY (Asosiy CTA — "Savatga qo'shish", "Buyurtma berish"):
+  O'lcham (default):   padding: 12px 28px, font-size: 15px
+  O'lcham (large):     padding: 16px 36px, font-size: 16px
+  O'lcham (small):     padding: 8px 20px, font-size: 13px
+  Rang:
+    Normal:    bg: #C8956C,  text: #FFFFFF
+    Hover:     bg: #B37D54,  text: #FFFFFF,  transform: translateY(-1px), shadow: --shadow-md
+    Active:    bg: #9E7352,  text: #FFFFFF,  transform: translateY(0px)
+    Disabled:  bg: #E0D5CA,  text: #FFFFFF,  opacity: 0.7, cursor: not-allowed
+
+SECONDARY (Ikkinchi darajali — "Batafsil ko'rish", "Davom etish"):
+  Rang:
+    Normal:    bg: #F8F6F3,  text: #2C2C2C
+    Hover:     bg: #F0ECE6,  text: #2C2C2C
+    Active:    bg: #E8E4DF,  text: #2C2C2C
+
+OUTLINE (Chegarali — "Bekor qilish", "Filtr"):
+  Rang:
+    Normal:    bg: transparent,  text: #2C2C2C,  border: 1.5px solid #E8E4DF
+    Hover:     bg: #F8F6F3,     text: #2C2C2C,  border-color: #C8956C
+    Active:    bg: #F0ECE6,     text: #2C2C2C
+
+GHOST (Ko'rinmas — "Yopish", ikon tugmalar):
+  Rang:
+    Normal:    bg: transparent,  text: #6B6560
+    Hover:     bg: #F8F6F3,     text: #2C2C2C
+
+ICON BUTTON (Savat, qidiruv, yopish):
+  O'lcham:       40px x 40px (mobil: 44px x 44px — minimal tap target)
+  Border-radius: 50% (doira) yoki 8px (to'rtburchak)
+  Padding:       8px
+
+
+================================================================================
+8. KARTOCHKA DIZAYNI (PRODUCT CARD)
+================================================================================
+
+MAHSULOT KARTOCHKASI O'LCHAMLARI:
+  Desktop grid:          4 ustun (1200px containerda), gap: 24px
+  Tablet (768px):        3 ustun, gap: 20px
+  Mobil (kichik):        2 ustun, gap: 12px
+  Kartochka min-width:   160px (mobil)
+
+KARTOCHKA TUZILISHI (yuqoridan pastga):
+  +---------------------------------+
+  |  RASM (aspect-ratio: 1/1)      |   Kvadrat rasm, object-fit: cover
+  |  +--------+                    |   Badge (GLOSSY/MATTE) yuqori chap
+  |  | MATTE  |                    |     bg: rgba(0,0,0,0.7), text: white
+  |  +--------+                    |     font-size: 10px, padding: 4px 10px
+  |                                |     border-radius: 4px
+  +---------------------------------+
+  |  Mahsulot nomi                 |   font-size: 14px, weight: 500, 2 qator max
+  |  "Matoviy" H 01002             |     color: --color-text-primary
+  |                                |
+  |  O'lcham: 60X60                |   font-size: 12px, color: --color-text-muted
+  |                                |
+  |  49 900 UZS                    |   font-size: 18px, weight: 700
+  |                                |     color: --color-text-primary
+  |                                |
+  |  [Savatga qo'shish]            |   Button (outline yoki primary, pill shakl)
+  +---------------------------------+
+
+KARTOCHKA STILISTIKASI:
+  Background:        #FFFFFF
+  Border:            1px solid #E8E4DF
+  Border-radius:     12px
+  Padding (matn):    16px
+  Shadow:
+    Normal:  0px 2px 4px rgba(0,0,0,0.04)
+    Hover:   0px 8px 20px rgba(0,0,0,0.08)
+  Transition:        all 0.3s ease
+  Hover effekt:
+    - Kartochka biroz ko'tariladi: transform: translateY(-4px)
+    - Soya kuchayadi
+    - Rasm biroz kattalashadi: transform: scale(1.05), overflow: hidden
+    - "Savatga qo'shish" tugmasi paydo bo'ladi (opacity 0 -> 1)
+
+
+================================================================================
+9. INPUT VA FORM ELEMENTLARI
+================================================================================
+
+INPUT (Matn kiritish):
+  Height:            48px (desktop), 44px (mobil)
+  Padding:           12px 16px
+  Font-size:         15px
+  Border:            1.5px solid #E8E4DF
+  Border-radius:     8px
+  Background:        #FFFFFF
+  Transition:        border-color 0.2s ease, box-shadow 0.2s ease
+
+  Focus holati:
+    border-color:    #C8956C
+    box-shadow:      0px 0px 0px 3px rgba(200,149,108,0.15)
+
+  Xato holati:
+    border-color:    #EF4444
+    box-shadow:      0px 0px 0px 3px rgba(239,68,68,0.1)
+
+  Label:
+    font-size:       14px
+    font-weight:     500
+    color:           #2C2C2C
+    margin-bottom:   6px
+
+  Xato matni:
+    font-size:       13px
+    color:           #EF4444
+    margin-top:      4px
+
+PHONE INPUT (+998 mask):
+  Chap tomonda bayroq ikonka + "+998"
+  O'ng tomonda raqam kiritish
+  Format: +998 XX XXX XX XX
+
+SELECT (Tanlash):
+  Input bilan bir xil stilistika
+  O'ng tomonda chevron (pastga strelka) ikonka
+  Dropdown: shadow-lg, border-radius: 8px
+
+CHECKBOX:
+  O'lcham:           20px x 20px
+  Border:            1.5px solid #E8E4DF
+  Border-radius:     4px
+  Tanlangan holat:   bg: #C8956C, checkmark: white
+
+TEXTAREA:
+  Input bilan bir xil, lekin min-height: 120px
+  resize: vertical
+
+
+================================================================================
+10. HERO SECTION DIZAYNI
+================================================================================
+
+TUZILISHI:
+  - To'liq ekran kengligi (100vw)
+  - Balandlik: 85vh (desktop), 70vh (mobil)
+  - Orqa fon: Kafel/keramogranit rasmi (professional fotografiya)
+  - Gradient overlay: yuqori 30% transparent -> pastki 100% to'q
+  - Matn: oq rangda, chap yoki markazda
+
+GRADIENT OVERLAY:
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(26, 26, 26, 0.2) 0%,
+      rgba(26, 26, 26, 0.5) 50%,
+      rgba(26, 26, 26, 0.85) 100%
+    ),
+    url('/hero-image.webp');
+  background-size: cover;
+  background-position: center;
+
+MATN TARTIBI:
+  Kichik label:  "FARG'ONA VODIYSIDA YETAKCHI KAFEL SAVDOSI"
+    font-size: 13px, uppercase, letter-spacing: 0.1em
+    color: rgba(255,255,255,0.7)
+
+  Katta sarlavha: "Eng sifatli kafellar va keramika plitkalari"
+    font-size: clamp(32px, 5vw, 56px), font-weight: 700
+    color: #FFFFFF
+
+  Taglavha:  "To'g'ridan-to'g'ri zavoddan! O'zbekiston bo'ylab yetkazib berish"
+    font-size: 18px, font-weight: 400
+    color: rgba(255,255,255,0.85)
+
+  Tugmalar:
+    [Katalogni ko'rish]   — Primary CTA (bronza rang)
+    [Bog'lanish]           — Outline CTA (oq border, oq matn)
+
+
+================================================================================
+11. HEADER / NAVBAR DIZAYNI
+================================================================================
+
+TUZILISHI (2 qatlam):
+
+TOP BAR (eng yuqori panel):
+  Balandlik:       40px
+  Background:      #1A1A1A
+  Matn rangi:      rgba(255,255,255,0.7)
+  Font-size:       12px–13px
+  Kontentlar:
+    Chap:   Ish vaqti icon + "Dush-Shan: 08:00 - 17:00"
+    Markaz: (bo'sh yoki promo matn)
+    O'ng:   Telefon icon + "+998 91 129 6666" | Telegram | Instagram
+
+ASOSIY NAVBAR (floating pill):
+  Balandlik:       72px
+  Background:      #FFFFFF
+  Border:          1px solid rgba(0,0,0,0.06)
+  Border-radius:   16px
+  Shadow:          0px 4px 12px rgba(0,0,0,0.06)
+  Max-width:       1200px (markazda)
+  Margin-top:      16px (yuqoridan biroz pastda)
+  Position:        sticky (scroll bo'lganda yuqoriga yopishadi)
+
+  Kontentlar:
+    Chap:   Logo (SVG)
+    Markaz: Menyu (Asosiy, Mahsulotlar, Biz haqimizda, Filiallar, Kontakt)
+            font-size: 14px, font-weight: 500
+            Faol sahifa: color: #C8956C, pastda 2px chiziq
+            Hover: color: #C8956C, transition 0.2s
+    O'ng:   Qidiruv ikonka | Savat ikonka (badge bilan)
+
+MOBIL NAVBAR:
+  Balandlik:       64px
+  Hamburger menyu: o'ng tomonda
+  Drawer: chapdan silliq chiqadi, width: 85vw, bg: white
+
+
+================================================================================
+12. FOOTER DIZAYNI
+================================================================================
+
+TUZILISHI:
+  Background:      #1A1A1A
+  Matn rangi:      rgba(255,255,255,0.7)
+  Padding:         80px 0 40px 0
+  Border-top:      1px solid rgba(255,255,255,0.1)
+
+  4 USTUN (desktop), 2 ustun (tablet), 1 ustun (mobil):
+
+  1-USTUN: Logo + qisqa tavsif
+    Logo (oq variant)
+    "Biz mijozlarimizni sifatli kafellar bilan taminlaymiz"
+    Ijtimoiy ikonlar: Telegram, Instagram
+
+  2-USTUN: Navigatsiya
+    "Tezkor havolalar" sarlavha
+    Asosiy, Mahsulotlar, Biz haqimizda, Filiallar, Kontakt
+
+  3-USTUN: Kontaktlar
+    "Kontaktlarimiz" sarlavha
+    Telefon: +998 91 129 6666
+    Telefon: +998 77 777 52 51
+    Email: vodiykafelsavdo1@gmail.com
+    Manzil: Farg'ona v., Vatan ravnaqi 47-uy
+
+  4-USTUN: Ish vaqti
+    "Ish vaqti" sarlavha
+    Dushanba - Shanba: 08:00 - 17:00
+    Yakshanba: Dam olish kuni
+
+  PASTKI CHIZIQ:
+    border-top: 1px solid rgba(255,255,255,0.1)
+    padding-top: 24px
+    Chap: "© 2025 Vodiy Kafel Savdo. Barcha huquqlar himoyalangan."
+    O'ng: "Maxfiylik siyosati" link
+
+
+================================================================================
+13. ANIMATSIYALAR VA SMOOTH EFFEKTLAR
+================================================================================
+
+UMUMIY QOIDALAR:
+  - Barcha transition: 0.2s — 0.3s ease (tezkor, lekin silliq)
+  - Juda sekin animatsiya bo'lmasin (UZB mijoz sabrsiz)
+  - Animatsiya maqsadli bo'lsin (har narsa uchun emas)
+
+TRANSITION TOKENLAR:
+  --transition-fast:     0.15s ease
+  --transition-base:     0.25s ease
+  --transition-slow:     0.35s ease
+  --transition-smooth:   0.4s cubic-bezier(0.4, 0, 0.2, 1)
+
+HOVER EFFEKTLAR:
+  Kartochka:
+    transform: translateY(-4px)
+    box-shadow: kuchayadi
+    transition: all 0.3s ease
+
+  Button:
+    transform: translateY(-1px)
+    shadow: paydo bo'ladi
+    transition: all 0.2s ease
+
+  Rasm (kartochka ichida):
+    transform: scale(1.05)
+    transition: transform 0.4s ease
+    overflow: hidden (container)
+
+  Navbar link:
+    color o'zgaradi: 0.2s ease
+    pastki chiziq: width 0% -> 100%, 0.25s ease
+
+SCROLL ANIMATSIYALARI:
+  Sahifa elementlari ekranga kirganda:
+    opacity: 0 -> 1
+    transform: translateY(20px) -> translateY(0)
+    transition: 0.5s ease
+    Staggered delay: har bir element 0.1s kechikish bilan
+
+MODAL/DRAWER ANIMATSIYALARI:
+  Drawer (savat):
+    O'ng tomondan sirpanib chiqadi
+    transform: translateX(100%) -> translateX(0)
+    transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1)
+    Overlay: opacity 0 -> 0.5, bg: rgba(0,0,0,0.5)
+
+  Modal:
+    Markazdan paydo bo'ladi
+    opacity: 0 -> 1
+    transform: scale(0.95) -> scale(1)
+    transition: 0.25s ease
+
+LOADING HOLAT:
+  Skeleton:
+    background: linear-gradient(90deg, #F0ECE6 25%, #F8F6F3 50%, #F0ECE6 75%)
+    background-size: 200% 100%
+    animation: shimmer 1.5s infinite
+    border-radius: kartochka bilan bir xil
+
+MICRO-INTERACTIONS:
+  "Savatga qo'shish" bosilganda:
+    - Tugma qisqa vaqt "Qo'shildi" ga o'zgaradi (yashil)
+    - Savat ikonkasidagi badge raqam +1 bo'ladi (kichik bounce animatsiya)
+    - Toast bildirishnoma paydo bo'ladi (pastdan yuqoriga sirpanib)
+
+  Accordion (FAQ) ochilish:
+    - Chevron 180 deg aylanadi: transition: 0.3s ease
+    - Content: max-height 0 -> auto, opacity 0 -> 1
+    - transition: 0.35s ease
+
+  Narx formatlash:
+    49900 -> "49 900 UZS" (ming ajratuvchi bo'shliq bilan)
+
+
+================================================================================
+14. RESPONSIVE BREAKPOINTLAR
+================================================================================
+
+  --breakpoint-sm:    480px     Kichik mobil
+  --breakpoint-md:    640px     Katta mobil
+  --breakpoint-lg:    768px     Planshet (portrait)
+  --breakpoint-xl:    1024px    Planshet (landscape) / kichik laptop
+  --breakpoint-2xl:   1200px    Desktop
+  --breakpoint-3xl:   1440px    Katta ekran
+
+GRID USTUNLAR:
+  < 480px:     2 ustun (mahsulotlar), 1 ustun (kontentlar)
+  480-768px:   2 ustun
+  768-1024px:  3 ustun
+  1024-1200px: 3-4 ustun
+  > 1200px:    4 ustun
+
+CONTAINER:
+  max-width: 1200px
+  padding: 16px (mobil), 24px (tablet), 0 (desktop)
+  margin: 0 auto
+
+
+================================================================================
+15. O'ZBEKISTON BOZORI UCHUN MAXSUS UX TAVSIYALAR
+================================================================================
+
+NARX KO'RSATISH:
+  - Narx KATTA va ANIQ bo'lishi kerak (UZB mijoz birinchi narxga qaraydi)
+  - Format: "49 900 UZS" (bo'shliq bilan ajratilgan, UZS so'zi bilan)
+  - Narx rangi: to'q, font-weight: 700
+  - Chegirma bo'lsa: eski narx ustiga chizilgan, yangi narx qizil
+
+TELEFON VA BOG'LANISH:
+  - Telefon raqam DOIM ko'rinib turishi kerak (TopBar va Footer)
+  - "Qo'ng'iroq qilish" floating tugma (mobilda pastki o'ng burchakda)
+  - Telegram tugmasi: UZBda eng ko'p ishlatiladigan messenger
+  - WhatsApp ham qo'shish mumkin (ba'zi hududlarda keng)
+
+TIL VA MATN:
+  - O'zbek tilida oddiy, tushunarli so'zlar ishlatish
+  - Murakkab terminlardan qochish
+  - Ruscha nomlarni saqlab qolish chunki kafel sohasida odatiy:
+    "Glyanseviy" (Glossy), "Matoviy" (Matte), "Kerama Granit"
+  - Lekin UI elementlari o'zbek tilida: "Savatga qo'shish", "Buyurtma berish"
+
+ISHONCH SIGNALLARI:
+  - "20+ yillik tajriba" badge
+  - "Birinchi sort kafellar" matni
+  - "To'g'ridan-to'g'ri zavoddan!" (oraliq savdogar yo'q)
+  - Manzil va telefon aniq ko'rsatilsin
+  - Yandex Maps — aniq joylashuv
+
+MOBIL TAJRIBA (MOBILE UX):
+  - 70%+ UZB foydalanuvchi mobildan kiradi
+  - Barcha tugmalar min 44px x 44px (barmaq bilan bosish oson)
+  - Pastki navigatsiya bar (mobilda): Asosiy, Katalog, Savat, Menyu
+  - Telefon raqamga bosganda avtomatik qo'ng'iroq: tel:+998911296666
+  - Telegram linkga bosganda Telegram ochiladi: https://t.me/vodiykafelsavdo
+  - Tez yuklanish: rasmlar WebP formatda, lazy loading
+
+SAVAT UX:
+  - "Savatga qo'shish" dan so'ng darhol feedback (toast + badge)
+  - Savat bo'sh bo'lganda: hazil aralash xabar "Savatda hech narsa yo'q... Ooops!"
+  - Buyurtma formasi ODDIY bo'lsin: faqat ism + telefon + izoh
+  - Ro'yxatdan o'tish SHART EMAS (guest checkout)
+
+PERFORMANCE:
+  - First Contentful Paint < 1.5s
+  - Rasmlar: next/image bilan optimallash, WebP/AVIF
+  - Lazy loading: ekranda ko'rinmaydigan rasmlar yuklanmasin
+  - Font: preload Manrope font
+
+
+================================================================================
+16. BADGE / TAG DIZAYNI
+================================================================================
+
+SIRT TURI BADGE:
+  "Glyanseviy" (Glossy):
+    bg: rgba(200,149,108,0.15), color: #9E7352
+    border: 1px solid rgba(200,149,108,0.3)
+    font-size: 11px, padding: 3px 10px, border-radius: 4px
+
+  "Matoviy" (Matte):
+    bg: rgba(107,101,96,0.1), color: #6B6560
+    border: 1px solid rgba(107,101,96,0.2)
+
+  "Kerama Granit":
+    bg: rgba(26,26,26,0.08), color: #2C2C2C
+    border: 1px solid rgba(26,26,26,0.15)
+
+HOLAT BADGE:
+  "Yangi":       bg: #E8F5E9, color: #2E7D32
+  "Aksiya":      bg: #FFF3E0, color: #E65100
+  "Tugadi":      bg: #FEE2E2, color: #EF4444
+
+O'LCHAM BADGE:
+  "60x60":       bg: #F8F6F3, color: #6B6560
+  "30x60":       bg: #F8F6F3, color: #6B6560
+
+
+================================================================================
+17. FAQ ACCORDION DIZAYNI
+================================================================================
+
+  Container:
+    max-width:     800px (markazda)
+    gap:           12px (savollar orasida)
+
+  Har bir element:
+    Background:    #FFFFFF
+    Border:        1px solid #E8E4DF
+    Border-radius: 12px
+    Padding:       20px 24px
+    Transition:    all 0.3s ease
+
+  Savol qismi:
+    font-size:     16px
+    font-weight:   600
+    color:         #1A1A1A
+    cursor:        pointer
+    display:       flex, justify: space-between, align: center
+    Chevron:       o'ng tomonda, 0.3s rotation
+
+  Javob qismi:
+    font-size:     15px
+    font-weight:   400
+    color:         #6B6560
+    line-height:   1.6
+    padding-top:   16px
+    border-top:    1px solid #F0ECE6
+    animation:     slideDown 0.3s ease
+
+  Ochilgan holat:
+    border-color:  #C8956C
+    shadow:        0px 4px 12px rgba(200,149,108,0.1)
+
+
+================================================================================
+18. PAGINATION DIZAYNI
+================================================================================
+
+  Tugmalar:
+    min-width:     40px
+    height:        40px
+    border-radius: 8px
+    font-size:     14px
+    font-weight:   500
+
+  Normal:     bg: transparent, color: #6B6560, border: 1px solid #E8E4DF
+  Hover:      bg: #F8F6F3, color: #2C2C2C
+  Faol:       bg: #C8956C, color: #FFFFFF, border: none
+  Disabled:   opacity: 0.4, cursor: not-allowed
+
+  Gap:        8px
+  Prev/Next:  "<" va ">" strelkalar yoki "Oldingi" / "Keyingi" matn
+
+
+================================================================================

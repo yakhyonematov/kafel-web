@@ -1,0 +1,413 @@
+================================================================================
+  ⚠️  HOZIRCHA MAJBURIY EMAS — KEYINROQ QAYTAMIZ
+================================================================================
+  VODIY KAFEL SAVDO — BREND NOMI VA LOGO TAKLIFLAR
+  10 ta nom varianti + har biri uchun logo konsepti
+================================================================================
+
+
+================================================================================
+TAKLIF №1:  VODIY KAFEL
+================================================================================
+
+  MA'NOSI:
+    "Vodiy" = Farg'ona vodiysi — kompaniya ildizi va joylashuvi
+    "Kafel" = Asosiy mahsulot
+    Oddiy, aniq, esda qolarli. UZB mijoz darhol tushunadi.
+
+  LOGO KONSEPTI:
+    Turi:         Logotip (tipografik) + kichik ikon belgisi
+    Tipografiya:  "VODIY" — qalin (bold 700), katta harflar
+                  "KAFEL" — ingichka (light 300), katta harflar
+                  Ikkisi orasida nozik chiziq yoki bo'shliq
+    Ikon belgisi: Tog' cho'qqisi silueti (Farg'ona vodiysini anglatadi)
+                  ichida kafel pattern (to'rtburchak grid) ko'rinadi
+    Rang:         #C8956C (bronza) + #1A1A1A (qora)
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │     ⛰ (tog' + kafel)      │
+    │                            │
+    │     V O D I Y              │  ← qalin, keng harflar
+    │      KAFEL                 │  ← ingichka, kichikroq
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + Hozirgi brend nomini saqlab qoladi
+    + UZB mijoz uchun tushunarli
+    + Qidiruv (SEO) uchun juda yaxshi
+    + Professional va zamonaviy ko'rinish
+    - Juda oddiy tuyulishi mumkin
+
+
+================================================================================
+TAKLIF №2:  VODIYTOSH
+================================================================================
+
+  MA'NOSI:
+    "Vodiy" = Vodiy (Farg'ona vodiysi)
+    "Tosh" = Tosh (kafel, keramogranit — tabiiy tosh hissi)
+    Bitta so'z sifatida — kuchli, mustahkam, tabiiy.
+
+  LOGO KONSEPTI:
+    Turi:         Logomarka (so'z + geometrik belgi)
+    Tipografiya:  "VODIYTOSH" — hammasini bir qatorda
+                  "VODIY" qismi bronza rangda, "TOSH" qismi qora rangda
+                  Font: Manrope Bold yoki maxsus serif font
+    Ikon belgisi: Ikki to'rtburchak (kafel) bir-biriga qisman ustma-ust
+                  qo'yilgan — birlik va mustahkamlikni anglatadi
+    Rang:         #C8956C (bronza) + #2C2C2C (to'q kulrang)
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │   ▪▫ (ikki kafel ustma-ust)│
+    │                            │
+    │   VODIY TOSH               │
+    │   ─────────                │  ← pastda nozik bronza chiziq
+    │   keramika & kafel         │  ← kichik taglavha
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + Kuchli, mustahkam his
+    + O'zbekcha so'z — mahalliy mijozga yaqin
+    + Qisqa va esda qoladi
+    + Premium tuyuladi
+
+
+================================================================================
+TAKLIF №3:  NAFIS KAFEL
+================================================================================
+
+  MA'NOSI:
+    "Nafis" = Nafis, nozik, go'zal (o'zbekcha)
+    "Kafel" = Asosiy mahsulot
+    Sifat va chiroylikiing birlashmasi.
+
+  LOGO KONSEPTI:
+    Turi:         Elegant tipografik logo
+    Tipografiya:  "NAFIS" — serif font (nozik, elegant)
+                  "KAFEL" — sans-serif (zamonaviy, toza)
+    Ikon belgisi: "N" harfi ichida kafel patterning aks etishi
+                  yoki "N" harfining o'zi nozik geometrik shaklda
+    Rang:         #1A1A1A (qora) + #C8956C (bronza aksent)
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │        𝒩                   │  ← Nozik serif "N" belgisi
+    │                            │
+    │   N A F I S                │  ← serif font, keng harflar
+    │     kafel                  │  ← sans-serif, kichik
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + Juda chiroyli va elegant
+    + "Nafis" so'zi UZB madaniyatida qadrlangan
+    + Premium his beradi
+    + Ayollar auditoriyasiga ham yoqadi (uy bezash)
+
+
+================================================================================
+TAKLIF №4:  VODIY CERAMIC
+================================================================================
+
+  MA'NOSI:
+    "Vodiy" = Mahalliy identitet (Farg'ona vodiysi)
+    "Ceramic" = Xalqaro tushuncha, professional ko'rinish
+    Mahalliy ildiz + global ambitsiya.
+
+  LOGO KONSEPTI:
+    Turi:         Zamonaviy logomarka
+    Tipografiya:  "VODIY" — bold geometrik sans-serif
+                  "CERAMIC" — light, keng harflar, pastda
+    Ikon belgisi: "V" harfi geometrik kafel shaklidan hosil bo'lgan
+                  (rombus yoki olti burchakli shaklda)
+    Rang:         #2C2C2C (to'q) + #C8956C (bronza "V" belgisi)
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │       ◇                    │  ← rombus ichida "V"
+    │                            │
+    │    V O D I Y               │
+    │    C E R A M I C           │
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + Xalqaro ko'rinish
+    + Eksport bozori uchun mos (Qozog'iston, Qirg'iziston)
+    + Zamonaviy va professional
+    + Domenga mos: vodiyceramic.uz
+
+
+================================================================================
+TAKLIF №5:  TOSH & RANG
+================================================================================
+
+  MA'NOSI:
+    "Tosh" = Tosh, kafel, keramogranit — material
+    "Rang" = Rang, dizayn, estetika — chiroylk
+    Materialning mustahkamligi va dizaynning chiroyligi birlashmasi.
+
+  LOGO KONSEPTI:
+    Turi:         Ikki so'zli brend + "&" belgisi bilan
+    Tipografiya:  "TOSH" — qalin serif font
+                  "&" — bronza rangda, nozik kursiv
+                  "RANG" — qalin serif font
+    Ikon belgisi: Rang palitrasi + kafel shakli birlashmasi
+                  (to'rtburchak ichida ranglar gradienti)
+    Rang:         #1A1A1A + #C8956C + sutrang gradient
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │    ■ (rang gradient kafel)  │
+    │                            │
+    │    TOSH & RANG             │
+    │    keramika do'koni        │  ← taglavha
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + Juda chiroyli va poetik
+    + O'zbekcha — mahalliy his
+    + Esda qoladi va boshqalardan farqlanadi
+    + Material + estetika = to'liq xabar
+
+
+================================================================================
+TAKLIF №6:  GRAND KAFEL
+================================================================================
+
+  MA'NOSI:
+    "Grand" = Katta, ulug', hashamatli
+    "Kafel" = Asosiy mahsulot
+    Premium va hashamatlilik hissi.
+
+  LOGO KONSEPTI:
+    Turi:         Klassik premium logotip
+    Tipografiya:  "GRAND" — katta serif font (Times yangi yoki Playfair)
+                  "KAFEL" — sans-serif, engil
+    Ikon belgisi: Toj (crown) yoki qalqon (shield) shaklida
+                  ichida "GK" monogramma
+    Rang:         #1A1A1A (qora) + #C8956C (oltin)
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │      ♛  GK                 │  ← oltin toj + monogramma
+    │                            │
+    │    G R A N D               │  ← serif, hashamatli
+    │      KAFEL                 │
+    │   ━━━━━━━━━━━━━            │  ← oltin chiziq
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + Premium va hashamatli his
+    + UZB mijoz "Grand" so'zini yaxshi tushunadi
+    + Raqobatchilardan ajralib turadi
+    - Biroz "ko'p gapirilgan" tuyulishi mumkin
+
+
+================================================================================
+TAKLIF №7:  MARJON KAFEL
+================================================================================
+
+  MA'NOSI:
+    "Marjon" = Marjon (marvarid, qimmatbaho tosh — o'zbekcha)
+    Qimmatbaho tosh kabi qadrli va sifatli mahsulot.
+
+  LOGO KONSEPTI:
+    Turi:         Elegant brend nomi
+    Tipografiya:  "MARJON" — nozik serif font, keng letter-spacing
+                  "KAFEL" — sans-serif, pastda
+    Ikon belgisi: Marvarid donasi yoki qimmatbaho tosh shakli
+                  geometrik va minimalist uslubda
+    Rang:         #C8956C (oltin) + #F5EDE5 (sutrang) + #1A1A1A
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │       ◆                    │  ← qimmatbaho tosh shakli
+    │                            │
+    │   M A R J O N              │  ← serif, nozik
+    │       kafel                │
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + O'zbekcha — madaniy chuqurlik
+    + "Qimmatbaho" hissi — premium
+    + Chiroyli jaranglaydi
+    + Ayol va erkak auditoriyaga bir xil yoqadi
+
+
+================================================================================
+TAKLIF №8:  VODIY PLITKA
+================================================================================
+
+  MA'NOSI:
+    "Vodiy" = Farg'ona vodiysi
+    "Plitka" = Ruscha "plitka" so'zi (UZBda kafel/plitka aralash ishlatiladi)
+    Real va amaliy — UZB bozorida "plitka" so'zi keng tarqalgan.
+
+  LOGO KONSEPTI:
+    Turi:         Amaliy va toza logotip
+    Tipografiya:  "VODIY" — bold sans-serif
+                  "PLITKA" — regular sans-serif
+    Ikon belgisi: 4 ta kichik kvadrat (2x2 grid) — kafel joylashuvini
+                  ifodalaydi, oddiy va geometrik
+    Rang:         #2C2C2C + #C8956C
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │    ▪ ▪                     │
+    │    ▪ ▪  (2x2 kafel grid)   │
+    │                            │
+    │    VODIY PLITKA            │
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + UZB mijoz uchun eng tushunarli
+    + "Plitka" so'zi keng ishlatiladi
+    + Oddiy va esda qoladi
+    - Biroz oddiy tuyulishi mumkin
+
+
+================================================================================
+TAKLIF №9:  V-STONE
+================================================================================
+
+  MA'NOSI:
+    "V" = Vodiy (Farg'ona vodiysi) ning birinchi harfi
+    "STONE" = Tosh (xalqaro, premium)
+    Zamonaviy, minimalist, xalqaro brendlarga o'xshash.
+
+  LOGO KONSEPTI:
+    Turi:         Minimalist xalqaro logomarka
+    Tipografiya:  "V" — juda katta, qalin, bronza rangda
+                  "STONE" — kichik, sans-serif, pastda yoki yonida
+    Ikon belgisi: "V" harfining o'zi — kafel burchagini (angular tile)
+                  eslatadigan geometrik shaklda
+    Rang:         #C8956C (bronza V) + #1A1A1A (STONE matni)
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │                            │
+    │       ╲  ╱                 │  ← geometrik "V" — kafel burchagi
+    │        ╲╱                  │
+    │                            │
+    │     V · S T O N E          │
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + Juda zamonaviy va minimalist
+    + Xalqaro bozorga tayyor
+    + Esda qoladi, qisqa
+    + Logo sifatida kuchli ("V" belgisi)
+    - UZB mijoz uchun biroz "chet ellik" tuyulishi mumkin
+
+
+================================================================================
+TAKLIF №10:  VODIY STONE
+================================================================================
+
+  MA'NOSI:
+    "Vodiy" = Farg'ona vodiysi — mahalliy identitet
+    "Stone" = Tosh — xalqaro, premium, mustahkam
+    Mahalliy + xalqaro muvozanat. Eng yaxshi balans.
+
+  LOGO KONSEPTI:
+    Turi:         Premium logomarka
+    Tipografiya:  "VODIY" — bold sans-serif (Manrope Bold)
+                  "STONE" — light sans-serif (Manrope Light)
+                  Ikkisi yonma-yon yoki ustma-ust
+    Ikon belgisi: Olti burchakli (hexagon) shakl — tabiiy tosh
+                  kesimini eslatadi. Ichida "VS" monogramma
+                  yoki vodiynig tog' konturi
+    Rang:         #1A1A1A + #C8956C + #F8F6F3 (fon uchun)
+
+  VIZUAL TASAVVUR:
+    ┌────────────────────────────┐
+    │       ⬡                    │  ← olti burchak (tosh kesimi)
+    │      VS                    │  ← ichida monogramma
+    │                            │
+    │   VODIY STONE              │
+    │   ceramic & granite        │  ← inglizcha taglavha
+    │   ━━━━━━━━━━━━             │
+    │   keramika va kafel        │  ← o'zbekcha taglavha
+    └────────────────────────────┘
+
+  AFZALLIKLARI:
+    + Mahalliy + xalqaro balans
+    + Premium va zamonaviy
+    + Eksport bozori uchun juda mos
+    + Kengayish imkoniyati (kafeldan boshqa tosh mahsulotlari ham)
+    + Domen: vodiystone.uz yoki vodiystone.com
+
+
+================================================================================
+UMUMIY TAQQOSLASH JADVALI
+================================================================================
+
+  №  | NOM              | PREMIUM | UZB MOS | XALQARO | ESDA QOLISH | TAVSIYA
+  ---|------------------|---------|---------|---------|-------------|--------
+  1  | Vodiy Kafel      |  ★★★   |  ★★★★★ |  ★★    |  ★★★★      | Xavfsiz tanlov
+  2  | VodiyTosh        |  ★★★★  |  ★★★★★ |  ★★★   |  ★★★★      | Kuchli tanlov
+  3  | Nafis Kafel      |  ★★★★★ |  ★★★★  |  ★★    |  ★★★★★     | Eng chiroyli
+  4  | Vodiy Ceramic    |  ★★★★  |  ★★★   |  ★★★★★ |  ★★★★      | Xalqaro tanlov
+  5  | Tosh & Rang      |  ★★★★  |  ★★★★  |  ★★★   |  ★★★★★     | Eng ijodiy
+  6  | Grand Kafel      |  ★★★★★ |  ★★★★  |  ★★★   |  ★★★★      | Hashamatli
+  7  | Marjon Kafel     |  ★★★★★ |  ★★★★★ |  ★★    |  ★★★★      | Eng o'zbek
+  8  | Vodiy Plitka     |  ★★★   |  ★★★★★ |  ★★    |  ★★★       | Eng amaliy
+  9  | V-Stone          |  ★★★★★ |  ★★     |  ★★★★★ |  ★★★★★     | Eng minimalist
+  10 | Vodiy Stone      |  ★★★★★ |  ★★★★  |  ★★★★★ |  ★★★★★     | ENG YAXSHI BALANS
+
+
+================================================================================
+MENING TAVSIYAM — TOP 3
+================================================================================
+
+  🥇 1-O'RIN:  VODIY STONE
+     Sabab: Premium + mahalliy identitet + xalqaro ambitsiya
+     Kengayish imkoniyati eng katta. Domen oson topiladi.
+     Logo "VS" monogrammasi juda kuchli va esda qoladigan belgi.
+
+  🥈 2-O'RIN:  NAFIS KAFEL
+     Sabab: Eng chiroyli o'zbekcha nom. "Nafis" so'zi sifat va
+     estetikani ifodalaydi. Ayol auditoriyaga juda yoqadi
+     (uy bezash qarori ko'pincha ayollar qo'lida).
+
+  🥉 3-O'RIN:  VODIYTOSH
+     Sabab: Kuchli, mustahkam, tabiiy his.
+     Bitta so'z — oson esda qoladi. UZB bozori uchun ideal.
+
+
+================================================================================
+LOGO UCHUN UMUMIY QOIDALAR (qaysi nomni tanlasangiz ham)
+================================================================================
+
+  FONT:
+    - Asosiy nom uchun: Manrope Bold yoki Playfair Display (serif)
+    - Taglavha uchun: Manrope Light
+    - Harflar oralig'i: 0.05em — 0.15em (keng letter-spacing = premium his)
+
+  RANGLAR:
+    - Asosiy: #1A1A1A (to'q qora/kulrang)
+    - Aksent: #C8956C (iliq bronza/oltin)
+    - Oq variant: #FFFFFF (to'q fon ustida)
+
+  O'LCHAM VA PROPORSIYA:
+    - Ikon belgisi: kvadrat yoki doira ichida, 1:1 proporsiya
+    - Ikon + matn: gorizontal joylashuvda 1:3 proporsiya
+    - Minimal o'lcham: ikon — 32px, matn — 24px balandlik
+
+  FORMATLAR KERAK:
+    - SVG (veb-sayt uchun)
+    - PNG (shaffof fon bilan, 1x va 2x)
+    - To'q fon ustidagi oq variant
+    - Och fon ustidagi qora variant
+    - Faqat ikon (favicon, mobil ikonka uchun)
+
+  QO'LLANISH JOYLARI:
+    - Veb-sayt header (navbar)
+    - Veb-sayt footer
+    - Favicon (brauzer tab ikonkasi)
+    - Ijtimoiy tarmoqlar profil rasmi
+    - Vizitka, banner, reklama
+
+
+================================================================================
