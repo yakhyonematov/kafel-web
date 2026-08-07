@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import '@photo-sphere-viewer/core/index.css';
-import { Loader2, ImageOff } from 'lucide-react';
+import { MdOutlineAutorenew as Loader2, MdOutlineBrokenImage as ImageOff } from 'react-icons/md';
 
 interface PanoramaViewerProps {
   /** Path to an equirectangular (360°) panorama image, e.g. '/panorama/showroom.jpg'. */

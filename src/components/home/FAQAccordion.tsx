@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { FAQ_DATA } from '../../constants/faq';
-import { ChevronRight, HelpCircle, MessageSquare } from 'lucide-react';
+import { MdOutlineChevronRight as ChevronRight, MdOutlineHelp as HelpCircle, MdOutlineMessage as MessageSquare } from 'react-icons/md';
 import Link from 'next/link';
 
 export default function FAQAccordion() {

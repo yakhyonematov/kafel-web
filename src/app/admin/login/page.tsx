@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { KeyRound, User as UserIcon, AlertCircle, Eye, EyeOff, Layout } from 'lucide-react';
+import { MdOutlineVpnKey as KeyRound, MdOutlinePerson as UserIcon, MdOutlineErrorOutline as AlertCircle, MdOutlineVisibility as Eye, MdOutlineVisibilityOff as EyeOff, MdOutlineDashboard as Layout } from 'react-icons/md';
 import { authService } from '../../../services/auth.service';
 import { useAuthStore } from '../../../store/useAuthStore';
 

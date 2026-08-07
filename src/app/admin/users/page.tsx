@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Plus, Search, Trash2, X, CheckCircle, ShieldCheck, UserCog, Eye, EyeOff } from 'lucide-react';
+import { MdOutlineAdd as Plus, MdOutlineSearch as Search, MdOutlineDelete as Trash2, MdOutlineClose as X, MdOutlineCheckCircle as CheckCircle, MdOutlineVerifiedUser as ShieldCheck, MdOutlineManageAccounts as UserCog, MdOutlineVisibility as Eye, MdOutlineVisibilityOff as EyeOff } from 'react-icons/md';
 import { authService } from '../../../services/auth.service';
 import { useAuthStore } from '../../../store/useAuthStore';
 import { User, Role } from '../../../types';

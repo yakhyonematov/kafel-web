@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Plus, Search, Edit2, Trash2, X, CheckCircle, Image as ImageIcon, Upload, Eye, ToggleLeft, ToggleRight } from 'lucide-react';
+import { MdOutlineAdd as Plus, MdOutlineSearch as Search, MdOutlineEdit as Edit2, MdOutlineDelete as Trash2, MdOutlineClose as X, MdOutlineCheckCircle as CheckCircle, MdOutlineImage as ImageIcon, MdOutlineUpload as Upload, MdOutlineVisibility as Eye, MdOutlineToggleOff as ToggleLeft, MdOutlineToggleOn as ToggleRight } from 'react-icons/md';
 import { productService } from '../../../services/product.service';
 import { factoryService } from '../../../services/factory.service';
 import { uploadService } from '../../../services/upload.service';

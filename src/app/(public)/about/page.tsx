@@ -2,7 +2,7 @@
 
 import React from 'react';
 import SectionTitle from '../../../components/home/SectionTitle';
-import { Award, Users, Globe, Building2, Calendar, ShieldCheck, ArrowRight, Send } from 'lucide-react';
+import { MdOutlineEmojiEvents as Award, MdOutlineGroup as Users, MdOutlinePublic as Globe, MdOutlineApartment as Building2, MdOutlineCalendarToday as Calendar, MdOutlineVerifiedUser as ShieldCheck, MdOutlineArrowForward as ArrowRight, MdOutlineSend as Send } from 'react-icons/md';
 import Link from 'next/link';
 
 export default function AboutPage() {

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { CheckCircle, Phone, MessageSquare, Trash2 } from 'lucide-react';
+import { MdOutlineCheckCircle as CheckCircle, MdOutlineCall as Phone, MdOutlineMessage as MessageSquare, MdOutlineDelete as Trash2 } from 'react-icons/md';
 import { orderService } from '../../../services/order.service';
 import { Order, OrderStatus } from '../../../types';
 import { formatPrice, formatDate } from '../../../lib/formatters';

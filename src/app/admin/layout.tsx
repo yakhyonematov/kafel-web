@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, ShoppingBag, Factory, Image, LogOut, Menu, X, User as UserIcon, Users, ClipboardList, Bell } from 'lucide-react';
+import { MdOutlineSpaceDashboard as LayoutDashboard, MdOutlineShoppingBag as ShoppingBag, MdOutlineFactory as Factory, MdOutlineImage as Image, MdOutlineLogout as LogOut, MdOutlineMenu as Menu, MdOutlineClose as X, MdOutlinePerson as UserIcon, MdOutlineGroup as Users, MdOutlineAssignment as ClipboardList, MdOutlineNotifications as Bell } from 'react-icons/md';
 import { useAuthStore } from '../../store/useAuthStore';
 import { ADMIN_NAVIGATION_LINKS } from '../../constants/navigation';
 import { useNewOrderAlerts } from '../../hooks/useNewOrderAlerts';

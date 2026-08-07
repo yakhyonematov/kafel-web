@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ShoppingCart } from 'lucide-react';
+import { MdOutlineShoppingCart as ShoppingCart } from 'react-icons/md';
 import { Product } from '../../types';
 import { formatPrice, formatSurface } from '../../lib/formatters';
 import { useCartStore } from '../../store/useCartStore';

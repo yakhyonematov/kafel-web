@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Plus, Trash2, X, CheckCircle, Image as ImageIcon, Upload, Eye } from 'lucide-react';
+import { MdOutlineAdd as Plus, MdOutlineDelete as Trash2, MdOutlineClose as X, MdOutlineCheckCircle as CheckCircle, MdOutlineImage as ImageIcon, MdOutlineUpload as Upload, MdOutlineVisibility as Eye } from 'react-icons/md';
 import { productService } from '../../../services/product.service';
 import { galleryService } from '../../../services/gallery.service';
 import { uploadService } from '../../../services/upload.service';

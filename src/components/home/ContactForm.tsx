@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Send, Phone, MapPin, Mail, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { MdOutlineSend as Send, MdOutlineCall as Phone, MdOutlineLocationOn as MapPin, MdOutlineEmail as Mail, MdOutlineAccessTime as Clock, MdOutlineVerifiedUser as ShieldCheck, MdOutlineCheckCircle as CheckCircle2 } from 'react-icons/md';
 import { SITE_CONFIG } from '../../constants/site';
 
 export default function ContactForm() {

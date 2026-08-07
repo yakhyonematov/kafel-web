@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
+import { MdOutlineClose as X, MdOutlineDelete as Trash2, MdOutlineAdd as Plus, MdOutlineRemove as Minus, MdOutlineShoppingBag as ShoppingBag, MdOutlineArrowForward as ArrowRight } from 'react-icons/md';
 import { useCartStore } from '../../store/useCartStore';
 import { orderService } from '../../services/order.service';
 import { formatPrice } from '../../lib/formatters';

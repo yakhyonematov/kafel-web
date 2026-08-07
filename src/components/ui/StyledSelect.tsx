@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import { MdOutlineExpandMore as ChevronDown } from 'react-icons/md';
 
 interface StyledSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   /** Sizing/typography classes only — horizontal padding and appearance are handled internally. */

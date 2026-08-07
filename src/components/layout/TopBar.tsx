@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Phone, Clock, Send } from 'lucide-react';
+import { MdOutlineCall as Phone, MdOutlineAccessTime as Clock, MdOutlineSend as Send } from 'react-icons/md';
 import { SITE_CONFIG } from '../../constants/site';
 
 export default function TopBar() {

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { Filter, RotateCcw, SlidersHorizontal, Search, Package, Loader2, X } from 'lucide-react';
+import { MdOutlineFilterList as Filter, MdOutlineRestartAlt as RotateCcw, MdOutlineTune as SlidersHorizontal, MdOutlineSearch as Search, MdOutlineInventory2 as Package, MdOutlineAutorenew as Loader2, MdOutlineClose as X } from 'react-icons/md';
 import { useFilterStore } from '../../../store/useFilterStore';
 import { productService } from '../../../services/product.service';
 import { factoryService } from '../../../services/factory.service';

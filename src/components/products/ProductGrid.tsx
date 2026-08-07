@@ -4,7 +4,7 @@ import React from 'react';
 import { Product } from '../../types';
 import ProductCard from './ProductCard';
 import Reveal from '../ui/Reveal';
-import { ShoppingBag } from 'lucide-react';
+import { MdOutlineShoppingBag as ShoppingBag } from 'react-icons/md';
 
 interface ProductGridProps {
   products: Product[];

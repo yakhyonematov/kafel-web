@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Plus, Search, Edit2, Trash2, X, PlusCircle, Factory as FactoryIcon, CheckCircle } from 'lucide-react';
+import { MdOutlineAdd as Plus, MdOutlineSearch as Search, MdOutlineEdit as Edit2, MdOutlineDelete as Trash2, MdOutlineClose as X, MdOutlineAddCircle as PlusCircle, MdOutlineFactory as FactoryIcon, MdOutlineCheckCircle as CheckCircle } from 'react-icons/md';
 import { factoryService } from '../../../services/factory.service';
 import { Factory } from '../../../types';
 import { useScrollLock } from '../../../hooks/useScrollLock';

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowUpRight } from 'lucide-react';
+import { MdOutlineCallMade as ArrowUpRight } from 'react-icons/md';
 
 const SLIDES = [
   {

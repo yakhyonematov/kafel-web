@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ShoppingBag, Factory, Image, MapPin, Plus, ArrowRight, Activity, TrendingUp } from 'lucide-react';
+import { MdOutlineShoppingBag as ShoppingBag, MdOutlineFactory as Factory, MdOutlineImage as Image, MdOutlineLocationOn as MapPin, MdOutlineAdd as Plus, MdOutlineArrowForward as ArrowRight, MdOutlineInsights as Activity, MdOutlineTrendingUp as TrendingUp } from 'react-icons/md';
 import { productService } from '../../../services/product.service';
 import { factoryService } from '../../../services/factory.service';
 import { galleryService } from '../../../services/gallery.service';

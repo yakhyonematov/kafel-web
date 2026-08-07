@@ -3,10 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-  X, Phone, User, Send, MapPin, ExternalLink,
-  Home, LayoutGrid, Info, MessageCircle, ChevronRight,
-} from 'lucide-react';
+import { MdOutlineClose as X, MdOutlineCall as Phone, MdOutlinePerson as User, MdOutlineSend as Send, MdOutlineLocationOn as MapPin, MdOutlineOpenInNew as ExternalLink, MdOutlineHome as Home, MdOutlineGridView as LayoutGrid, MdOutlineInfo as Info, MdOutlineChatBubble as MessageCircle, MdOutlineChevronRight as ChevronRight } from 'react-icons/md';
 import { NAVIGATION_LINKS } from '../../constants/navigation';
 import { SITE_CONFIG } from '../../constants/site';
 import { useScrollLock } from '../../hooks/useScrollLock';

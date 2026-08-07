@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MapPin, Clock, Send, ArrowUp, ShieldCheck } from 'lucide-react';
+import { MdOutlineCall as Phone, MdOutlineEmail as Mail, MdOutlineLocationOn as MapPin, MdOutlineAccessTime as Clock, MdOutlineSend as Send, MdOutlineArrowUpward as ArrowUp, MdOutlineVerifiedUser as ShieldCheck } from 'react-icons/md';
 import { SITE_CONFIG } from '../../constants/site';
 import { NAVIGATION_LINKS } from '../../constants/navigation';
 

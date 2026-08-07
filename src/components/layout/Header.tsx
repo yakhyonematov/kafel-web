@@ -3,10 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import {
-  ShoppingBag, Search, Menu, Phone, User, X,
-  Home, LayoutGrid, Info, MapPin, MessageCircle, ArrowRight,
-} from 'lucide-react';
+import { MdOutlineShoppingBag as ShoppingBag, MdOutlineSearch as Search, MdOutlineMenu as Menu, MdOutlineCall as Phone, MdOutlinePerson as User, MdOutlineClose as X, MdOutlineHome as Home, MdOutlineGridView as LayoutGrid, MdOutlineInfo as Info, MdOutlineLocationOn as MapPin, MdOutlineChatBubble as MessageCircle, MdOutlineArrowForward as ArrowRight } from 'react-icons/md';
 import { NAVIGATION_LINKS } from '../../constants/navigation';
 import { SITE_CONFIG } from '../../constants/site';
 import { useCartStore } from '../../store/useCartStore';

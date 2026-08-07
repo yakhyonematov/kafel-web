@@ -3,19 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import {
-  ArrowLeft,
-  ShoppingCart,
-  ShieldCheck,
-  Truck,
-  BadgeCheck,
-  Calculator,
-  Heart,
-  Share2,
-  Sparkles,
-  Check,
-  ChevronRight,
-} from 'lucide-react';
+import { MdOutlineArrowBack as ArrowLeft, MdOutlineShoppingCart as ShoppingCart, MdOutlineVerifiedUser as ShieldCheck, MdOutlineLocalShipping as Truck, MdOutlineVerified as BadgeCheck, MdOutlineCalculate as Calculator, MdOutlineFavorite as Heart, MdOutlineShare as Share2, MdOutlineAutoAwesome as Sparkles, MdOutlineCheck as Check, MdOutlineChevronRight as ChevronRight } from 'react-icons/md';
 import { productService } from '../../../../services/product.service';
 import { galleryService } from '../../../../services/gallery.service';
 import { Product, GalleryImage } from '../../../../types';

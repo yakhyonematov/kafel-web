@@ -12,7 +12,7 @@ import ContactForm from '../../components/home/ContactForm';
 import { productService } from '../../services/product.service';
 import { Product } from '../../types';
 import Reveal from '../../components/ui/Reveal';
-import { ShieldCheck, Truck, Award, Sparkles, MapPin, Phone, Clock, ArrowRight, View, Map as MapIcon } from 'lucide-react';
+import { MdOutlineVerifiedUser as ShieldCheck, MdOutlineLocalShipping as Truck, MdOutlineEmojiEvents as Award, MdOutlineAutoAwesome as Sparkles, MdOutlineLocationOn as MapPin, MdOutlineCall as Phone, MdOutlineAccessTime as Clock, MdOutlineArrowForward as ArrowRight, MdOutline360 as View, MdOutlineMap as MapIcon } from 'react-icons/md';
 
 const PanoramaViewer = dynamic(() => import('../../components/home/PanoramaViewer'), { ssr: false });
 
