@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import SmoothScroll from "../components/providers/SmoothScroll";
 import TopLoader from "../components/layout/TopLoader";
 
 export const metadata: Metadata = {
@@ -55,7 +54,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <TopLoader />
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
       </body>
     </html>
   );

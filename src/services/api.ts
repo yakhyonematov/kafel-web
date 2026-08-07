@@ -25,4 +25,25 @@ api.interceptors.request.use(
   }
 );
 
+// Response interceptor: a 401 means the stored token is missing/expired/invalid —
+// clear it and send the user back to login instead of leaving the admin panel
+// stuck silently failing every request.
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (
+      typeof window !== 'undefined' &&
+      error?.response?.status === 401 &&
+      !error.config?.url?.includes('/auth/login')
+    ) {
+      localStorage.removeItem('admin_token');
+      localStorage.removeItem('admin_user');
+      if (!window.location.pathname.startsWith('/admin/login')) {
+        window.location.href = '/admin/login';
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default api;

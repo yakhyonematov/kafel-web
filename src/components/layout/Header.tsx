@@ -59,47 +59,29 @@ export default function Header() {
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-[45] transition-all duration-500"
+        className={`fixed top-0 left-0 right-0 z-[45] transition-all duration-300 ${
+          isTransparent
+            ? 'bg-black/25 backdrop-blur-md'
+            : 'bg-white/95 backdrop-blur-xl border-b border-border'
+        }`}
       >
-        {/* Top Accent Line */}
-        <div
-          className={`h-[2px] w-full transition-all duration-500 ${
-            isTransparent ? 'bg-white/20' : 'bg-gradient-to-r from-accent via-primary to-accent'
-          }`}
-        />
-
-        {/* Main Navbar */}
-        <div
-          className={`w-full transition-all duration-500 ${
-            isTransparent
-              ? 'bg-black/20 backdrop-blur-md'
-              : 'bg-white/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.08)]'
-          }`}
-        >
-          <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16 md:h-[72px]">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 md:h-[72px]">
 
               {/* ─── Left: Logo & Brand ─── */}
-              <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-                {/* Diamond Logo Mark */}
-                <div className="relative">
-                  <div className={`w-9 h-9 flex items-center justify-center rounded-lg rotate-45 transition-all duration-300 group-hover:rotate-[55deg] group-hover:scale-105 ${
-                    isTransparent
-                      ? 'bg-white/20 border border-white/30 shadow-lg shadow-white/10'
-                      : 'bg-gradient-to-br from-accent to-primary shadow-md shadow-accent/25'
-                  }`}>
-                    <span className={`-rotate-45 font-black text-sm tracking-tight transition-colors ${
-                      isTransparent ? 'text-white' : 'text-white'
-                    }`}>V</span>
-                  </div>
+              <Link href="/" className="flex items-center gap-2.5 shrink-0">
+                <div className={`w-9 h-9 flex items-center justify-center rounded-lg shrink-0 ${
+                  isTransparent ? 'bg-white/15' : 'bg-accent'
+                }`}>
+                  <span className="font-black text-sm text-white">V</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className={`font-black text-[13px] sm:text-[15px] tracking-[0.15em] uppercase leading-tight transition-colors ${
+                  <span className={`font-black text-sm tracking-wide uppercase leading-tight transition-colors ${
                     isTransparent ? 'text-white' : 'text-primary'
                   }`}>
                     VODIY KAFEL
                   </span>
-                  <span className={`hidden sm:block text-[9px] tracking-[0.3em] uppercase font-medium leading-none mt-0.5 transition-colors ${
+                  <span className={`hidden sm:block text-[0.6rem] tracking-[0.25em] uppercase font-medium leading-none mt-0.5 transition-colors ${
                     isTransparent ? 'text-white/60' : 'text-text-muted'
                   }`}>
                     SAVDO MARKAZI
@@ -108,7 +90,7 @@ export default function Header() {
               </Link>
 
               {/* ─── Center: Desktop Navigation ─── */}
-              <nav className="hidden xl:flex items-center gap-0.5">
+              <nav className="hidden xl:flex items-center gap-1">
                 {NAVIGATION_LINKS.map((link) => {
                   const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href.split('#')[0]) && link.href.split('#')[0] !== '/');
                   const IconComponent = link.icon ? ICON_MAP[link.icon] : null;
@@ -116,30 +98,18 @@ export default function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`relative flex items-center gap-1.5 h-9 px-3.5 rounded-full text-[13px] font-semibold transition-all duration-200 group ${
+                      className={`flex items-center gap-1.5 h-9 px-3.5 rounded-lg text-sm font-semibold transition-colors duration-150 ${
                         isTransparent
                           ? isActive
                             ? 'bg-white/15 text-white'
                             : 'text-white/75 hover:text-white hover:bg-white/10'
                           : isActive
-                            ? 'bg-accent/10 text-accent'
+                            ? 'bg-accent text-white'
                             : 'text-text-secondary hover:text-text-primary hover:bg-bg-secondary'
                       }`}
                     >
-                      {IconComponent && (
-                        <IconComponent className={`w-3.5 h-3.5 transition-transform duration-200 group-hover:scale-110 ${
-                          isActive
-                            ? isTransparent ? 'text-white' : 'text-accent'
-                            : ''
-                        }`} />
-                      )}
+                      {IconComponent && <IconComponent className="w-3.5 h-3.5" />}
                       <span>{link.label}</span>
-                      {/* Active indicator dot */}
-                      {isActive && (
-                        <span className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full ${
-                          isTransparent ? 'bg-white' : 'bg-accent'
-                        }`} />
-                      )}
                     </Link>
                   );
                 })}
@@ -178,7 +148,7 @@ export default function Header() {
                 {/* Quick Call */}
                 <a
                   href={`tel:${SITE_CONFIG.phonePrimary.replace(/\s+/g, '')}`}
-                  className={`hidden sm:flex items-center gap-1.5 h-8 pl-2 pr-3 rounded-full text-[11px] font-bold transition-all duration-200 ${
+                  className={`hidden sm:flex items-center gap-1.5 h-8 pl-2 pr-3 rounded-full text-xs font-bold transition-colors duration-150 ${
                     isTransparent
                       ? 'text-white/80 hover:bg-white/10 hover:text-white'
                       : 'text-text-secondary hover:bg-accent/10 hover:text-accent'
@@ -230,7 +200,7 @@ export default function Header() {
                 >
                   <ShoppingBag className="w-4 h-4" />
                   {mounted && totalItems > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 bg-accent text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-white shadow-sm animate-in zoom-in-50 duration-200">
+                    <span className="absolute -top-0.5 -right-0.5 bg-accent text-white text-[0.6rem] font-black w-4 h-4 rounded-full flex items-center justify-center ring-2 ring-white">
                       {totalItems}
                     </span>
                   )}
@@ -250,7 +220,6 @@ export default function Header() {
                 </button>
               </div>
             </div>
-          </div>
         </div>
       </header>
 

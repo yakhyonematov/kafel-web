@@ -305,7 +305,7 @@ export default function ProductDetailPage() {
 
           {/* Thumbnail Strip */}
           {(gallery.length > 0 || product.mainImage) && (
-            <div data-lenis-prevent className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
+            <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-thin">
               <button
                 onClick={() => setActiveImage(getImageUrl(product.mainImage))}
                 className={`w-20 h-20 rounded-lg overflow-hidden border-2 shrink-0 bg-bg-secondary transition-all ${

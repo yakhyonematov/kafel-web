@@ -6,18 +6,14 @@ let lockCount = 0;
 let savedScrollY = 0;
 
 /**
- * Locks page scroll while `isLocked` is true — pauses Lenis (if active) and
- * fixes the body in place so overlays (drawers/menus) don't leave the
- * background scrollable behind them on mobile. Reference-counted so nested
- * or sequential overlays (e.g. cart drawer opened from within another sheet)
- * don't unlock each other prematurely.
+ * Locks page scroll while `isLocked` is true — fixes the body in place so
+ * overlays (drawers/menus) don't leave the background scrollable behind them
+ * on mobile. Reference-counted so nested or sequential overlays (e.g. cart
+ * drawer opened from within another sheet) don't unlock each other prematurely.
  */
 export function useScrollLock(isLocked: boolean) {
   useEffect(() => {
     if (!isLocked) return;
-
-    const lenis = (window as any).__lenis;
-    lenis?.stop();
 
     if (lockCount === 0) {
       savedScrollY = window.scrollY;
@@ -38,8 +34,6 @@ export function useScrollLock(isLocked: boolean) {
         document.body.style.right = '';
         document.body.style.width = '';
         window.scrollTo(0, savedScrollY);
-        (window as any).__lenis?.start();
-        (window as any).__lenis?.scrollTo(savedScrollY, { immediate: true });
       }
     };
   }, [isLocked]);

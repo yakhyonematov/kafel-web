@@ -50,8 +50,7 @@ function AdminProductsCatalogContent() {
   const [successMsg, setSuccessMsg] = useState('');
   const modalContentRef = useRef<HTMLDivElement>(null);
 
-  // Lock background scroll (and pause Lenis, so wheel events reach the modal's
-  // own scrollable div instead of being captured by the smooth-scroll library).
+  // Lock background scroll while the modal is open.
   useScrollLock(showModal);
   useEscapeKey(showModal, () => setShowModal(false));
 
@@ -420,7 +419,6 @@ function AdminProductsCatalogContent() {
           <div className="fixed inset-0 bg-black/60 backdrop-blur-xs" onClick={() => setShowModal(false)} />
           <div
             ref={modalContentRef}
-            data-lenis-prevent
             className="relative w-full max-w-[640px] bg-white rounded-3xl border border-border p-6 sm:p-8 shadow-2xl flex flex-col gap-5 my-8 animate-scale-up z-10 max-h-[90vh] overflow-y-auto overscroll-contain"
           >
             <div className="flex justify-between items-center border-b border-border pb-3 shrink-0">

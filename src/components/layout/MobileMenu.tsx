@@ -41,14 +41,14 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {/* Header */}
         <div className="flex justify-between items-center p-6 pb-5">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-gradient-to-br from-accent to-primary rounded-lg rotate-45 flex items-center justify-center shadow-md shadow-accent/25">
-              <span className="-rotate-45 font-black text-white text-xs">V</span>
+            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+              <span className="font-black text-white text-xs">V</span>
             </div>
             <div className="flex flex-col">
-              <span className="font-black text-[13px] tracking-[0.12em] text-primary uppercase leading-tight">
+              <span className="font-black text-sm tracking-wide text-primary uppercase leading-tight">
                 VODIY KAFEL
               </span>
-              <span className="text-[8px] tracking-[0.25em] text-text-muted uppercase font-medium">
+              <span className="text-[0.55rem] tracking-[0.25em] text-text-muted uppercase font-medium">
                 SAVDO MARKAZI
               </span>
             </div>

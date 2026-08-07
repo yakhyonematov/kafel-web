@@ -89,6 +89,10 @@
   --font-heading: var(--font-sans);
 }
 
+html {
+  font-size: 18px;
+}
+
 body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);

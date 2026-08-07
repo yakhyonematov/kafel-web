@@ -152,7 +152,6 @@ function ProductsCatalogContent() {
 
       {/* Horizontal Pill Filters Shortcut Bar (scrollable chips — same on mobile & desktop) */}
       <div
-        data-lenis-prevent
         className="flex items-center gap-2 overflow-x-auto pb-4 pt-3 -mx-4 px-4 scrollbar-none shrink-0 mb-6"
       >
         <button
@@ -369,7 +368,7 @@ function ProductsCatalogContent() {
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div data-lenis-prevent className="flex items-center justify-start sm:justify-center gap-1.5 pt-4 overflow-x-auto scrollbar-none">
+            <div className="flex items-center justify-start sm:justify-center gap-1.5 pt-4 overflow-x-auto scrollbar-none">
               <button
                 onClick={() => setPage(Math.max(1, page - 1))}
                 disabled={page === 1}
@@ -428,7 +427,7 @@ function ProductsCatalogContent() {
           </div>
 
           {/* Scrollable Filters Content */}
-          <div data-lenis-prevent className="flex-1 overflow-y-auto overscroll-contain p-6 space-y-5">
+          <div className="flex-1 overflow-y-auto overscroll-contain p-6 space-y-5">
             {/* Search */}
             <div className="flex flex-col gap-2">
               <label className="text-xs font-bold text-text-primary uppercase tracking-wide">
