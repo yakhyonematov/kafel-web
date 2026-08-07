@@ -20,7 +20,7 @@ export default function HomePage() {
   const [floorProducts, setFloorProducts] = useState<Product[]>([]);
   const [wallProducts, setWallProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [locationView, setLocationView] = useState<'360' | 'map'>('360');
+  const [locationView, setLocationView] = useState<'360' | 'map'>('map');
 
   useEffect(() => {
     async function loadData() {

@@ -1,25 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { MdOutlineCall as Phone, MdOutlineEmail as Mail, MdOutlineLocationOn as MapPin, MdOutlineAccessTime as Clock, MdOutlineSend as Send, MdOutlineArrowUpward as ArrowUp, MdOutlineVerifiedUser as ShieldCheck } from 'react-icons/md';
 import { SITE_CONFIG } from '../../constants/site';
 import { NAVIGATION_LINKS } from '../../constants/navigation';
 
 export default function Footer() {
-  const [phone, setPhone] = useState('');
-  const [name, setName] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !phone) return;
-    setSubmitted(true);
-    setPhone('');
-    setName('');
-    setTimeout(() => setSubmitted(false), 5000);
-  };
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -156,55 +143,29 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Quick Callback (3 cols - Minimalist form design) */}
+          {/* Column 4: Small location map (3 cols) */}
           <div className="lg:col-span-3 space-y-5">
             <h3 className="text-white font-bold text-[10px] uppercase tracking-[0.2em] border-b border-white/10 pb-3">
-              Savollaringiz bormi?
+              Manzilimiz
             </h3>
-            <p className="text-xs text-text-inverse/50 leading-relaxed">
-              Raqamingizni qoldiring, biz tez orada sizga qayta qo'ng'iroq qilamiz.
-            </p>
-
-            {submitted ? (
-              <div className="p-4 bg-white/5 border border-success/30 rounded-lg text-success text-xs leading-relaxed text-center animate-fade-in">
-                Muvaffaqiyatli yuborildi! Tez fursatda bog'lanamiz.
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 pt-1">
-                {/* Name Input Underlined */}
-                <div className="border-b border-white/10 focus-within:border-accent transition-colors pb-0.5">
-                  <input
-                    type="text"
-                    placeholder="Ismingiz"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className="w-full h-9 bg-transparent text-xs text-white placeholder-white/30 focus:outline-none w-full"
-                  />
-                </div>
-                {/* Phone Input Underlined */}
-                <div className="border-b border-white/10 focus-within:border-accent transition-colors pb-0.5">
-                  <div className="flex items-center w-full">
-                    <span className="text-xs text-white/70 font-medium pr-1 shrink-0">+998</span>
-                    <input
-                      type="tel"
-                      placeholder="Telefon raqamingiz"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      required
-                      className="flex-1 h-9 bg-transparent text-xs text-white placeholder-white/30 focus:outline-none w-full"
-                    />
-                  </div>
-                </div>
-                {/* Submit button pill shape */}
-                <button
-                  type="submit"
-                  className="w-full h-10 bg-accent text-white font-bold text-[10px] rounded-full uppercase tracking-widest hover:bg-accent-hover transition-all shadow-md shadow-accent/15"
-                >
-                  Yuborish
-                </button>
-              </form>
-            )}
+            <div className="h-40 rounded-lg overflow-hidden border border-white/10">
+              <iframe
+                title="Vodiy Kafel Savdo — xarita"
+                src="https://yandex.com/map-widget/v1/?org=112678881268&ll=71.785000%2C40.385000&z=15"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                className="pointer-events-none grayscale-[15%] contrast-[105%]"
+              />
+            </div>
+            <a
+              href={SITE_CONFIG.mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full h-10 rounded-full bg-accent text-white font-bold text-[10px] uppercase tracking-widest hover:bg-accent-hover transition-all shadow-md shadow-accent/15 flex items-center justify-center gap-2"
+            >
+              <span>Xaritada ochish</span>
+            </a>
           </div>
         </div>
 
