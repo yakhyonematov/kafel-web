@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import TopLoader from "../components/layout/TopLoader";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Vodiy Kafel Savdo",
@@ -13,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="uz" className="h-full antialiased" suppressHydrationWarning>
+    <html lang="uz" className={`h-full antialiased ${inter.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

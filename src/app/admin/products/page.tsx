@@ -419,28 +419,32 @@ function AdminProductsCatalogContent() {
           <div className="fixed inset-0 bg-black/60 backdrop-blur-xs" onClick={() => setShowModal(false)} />
           <div
             ref={modalContentRef}
-            className="relative w-full max-w-[640px] bg-white rounded-3xl border border-border p-6 sm:p-8 shadow-2xl flex flex-col gap-5 my-8 animate-scale-up z-10 max-h-[90vh] overflow-y-auto overscroll-contain"
+            className="relative w-full max-w-[640px] bg-white rounded-3xl border border-border shadow-2xl flex flex-col my-8 animate-scale-up z-10 max-h-[90vh] overflow-hidden"
           >
-            <div className="flex justify-between items-center border-b border-border pb-3 shrink-0">
-              <h3 className="font-sans font-bold text-lg text-text-primary">
-                {editingId ? 'Mahsulot ma\'lumotlarini tahrirlash' : 'Yangi mahsulot qo\'shish'}
-              </h3>
-              <button
-                onClick={() => setShowModal(false)}
-                className="p-1 rounded-full hover:bg-bg-secondary text-text-secondary hover:text-accent"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {error && (
-              <div className="p-3 bg-error-light border border-error/20 rounded-xl text-error text-xs shrink-0">
-                {error}
+            <form onSubmit={handleSubmit} className="flex flex-col min-h-0 flex-1">
+              {/* Sticky header — stays visible while the form scrolls */}
+              <div className="flex justify-between items-center px-6 sm:px-8 pt-6 sm:pt-8 pb-4 border-b border-border shrink-0">
+                <h3 className="font-sans font-bold text-lg text-text-primary">
+                  {editingId ? 'Mahsulot ma\'lumotlarini tahrirlash' : 'Yangi mahsulot qo\'shish'}
+                </h3>
+                <button
+                  type="button"
+                  onClick={() => setShowModal(false)}
+                  className="p-1 rounded-full hover:bg-bg-secondary text-text-secondary hover:text-accent"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
-            )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Scrollable body */}
+              <div className="flex-1 overflow-y-auto overscroll-contain scrollbar-thin px-6 sm:px-8 py-5 space-y-4">
+                {error && (
+                  <div className="p-3 bg-error-light border border-error/20 rounded-xl text-error text-xs">
+                    {error}
+                  </div>
+                )}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Name */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[10px] font-bold text-text-primary uppercase tracking-wider">
@@ -666,8 +670,10 @@ function AdminProductsCatalogContent() {
                   </div>
                 </div>
               </div>
+              </div>
 
-              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-border shrink-0">
+              {/* Sticky footer — actions always reachable without scrolling to the end */}
+              <div className="grid grid-cols-2 gap-3 px-6 sm:px-8 py-5 border-t border-border shrink-0">
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}

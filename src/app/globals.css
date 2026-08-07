@@ -85,12 +85,12 @@
 
   --shadow-warm: var(--shadow-warm);
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: var(--font-inter), "Helvetica Neue", Arial, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-heading: var(--font-sans);
 }
 
 html {
-  font-size: 18px;
+  scroll-behavior: smooth;
 }
 
 body {
