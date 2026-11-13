@@ -124,7 +124,7 @@ export default function AboutPage() {
               Xalqaro Import
             </h4>
             <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              Biz dunyo bo'yicha eng ilg'or texnologiyalarga ega bo'lgan **Xitoy va Hindiston** davlatlarining yirik zavodlaridan kafel mahsulotlarini to'g'ridan-to'g'ri import qilamiz.
+              Biz dunyo bo'yicha eng ilg'or texnologiyalarga ega bo'lgan Xitoy va Hindiston davlatlarining yirik zavodlaridan kafel mahsulotlarini to'g'ridan-to'g'ri import qilamiz.
             </p>
           </div>
 
@@ -137,7 +137,7 @@ export default function AboutPage() {
               Mintaqaviy Eksport
             </h4>
             <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              O‘zbekistonda ishlab chiqarilgan yuqori sifatli va raqobatbardosh kafel mahsulotlarini qo'shni **Qirg‘iziston, Qozog‘iston va Tojikiston** davlatlariga dilerlik shoxobchalari orqali eksport qilamiz.
+              O‘zbekistonda ishlab chiqarilgan yuqori sifatli va raqobatbardosh kafel mahsulotlarini qo'shni Qirg‘iziston, Tojikiston va Qozog‘iston davlatlariga dilerlik shoxobchalari orqali eksport qilamiz.
             </p>
           </div>
 
@@ -177,7 +177,7 @@ export default function AboutPage() {
                 Global Import va Eksport
               </h4>
               <p className="text-xs text-text-secondary leading-relaxed">
-                Hindiston va Xitoyning eng ilg'or kafel ishlab chiqaruvchilaridan import kanallari hamda Markaziy Osiyo (Qirg'iziston, Qozog'iston, Tojikiston) bo'ylab mustahkam eksport logistika tarmoqlarimiz xaritasi.
+                Xitoy va Hindistonning eng ilg'or kafel ishlab chiqaruvchilaridan import kanallari hamda Markaziy Osiyo (Qirg'iziston, Tojikiston, Qozog'iston) bo'ylab mustahkam eksport logistika tarmoqlarimiz xaritasi.
               </p>
             </div>
           </div>

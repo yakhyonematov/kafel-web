@@ -1,5 +1,7 @@
 'use client';
 
+import WorkHours from '@/components/site/WorkHours';
+import BranchContacts from '@/components/site/BranchContacts';
 import React, { useState } from 'react';
 import { MdOutlineSend as Send, MdOutlineCall as Phone, MdOutlineLocationOn as MapPin, MdOutlineEmail as Mail, MdOutlineAccessTime as Clock, MdOutlineVerifiedUser as ShieldCheck, MdOutlineCheckCircle as CheckCircle2 } from 'react-icons/md';
 import { SITE_CONFIG } from '../../constants/site';
@@ -85,18 +87,7 @@ export default function ContactForm() {
                   </div>
                   <div className="space-y-1 flex-1">
                     <span className="text-[9px] font-bold tracking-widest text-white/40 uppercase block">Telefon raqamlar</span>
-                    <a
-                      href={`tel:${SITE_CONFIG.phonePrimary.replace(/\s+/g, '')}`}
-                      className="text-white hover:text-accent transition-colors block font-medium"
-                    >
-                      {SITE_CONFIG.phonePrimary}
-                    </a>
-                    <a
-                      href={`tel:${SITE_CONFIG.phoneSecondary.replace(/\s+/g, '')}`}
-                      className="text-white/70 hover:text-white transition-colors block font-medium"
-                    >
-                      {SITE_CONFIG.phoneSecondary}
-                    </a>
+                    <BranchContacts />
                   </div>
                 </div>
 
@@ -107,10 +98,7 @@ export default function ContactForm() {
                   </div>
                   <div className="space-y-1">
                     <span className="text-[9px] font-bold tracking-widest text-white/40 uppercase block">Ish vaqti</span>
-                    <p className="text-white leading-relaxed font-medium">
-                      {SITE_CONFIG.workHours}
-                    </p>
-                    <p className="text-[10px] text-white/40">{SITE_CONFIG.workDays}</p>
+                    <WorkHours />
                   </div>
                 </div>
               </div>

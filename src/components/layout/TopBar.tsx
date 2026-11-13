@@ -1,5 +1,6 @@
 'use client';
 
+import WorkHours from '@/components/site/WorkHours';
 import React from 'react';
 import { MdOutlineCall as Phone, MdOutlineAccessTime as Clock, MdOutlineSend as Send } from 'react-icons/md';
 import { SITE_CONFIG } from '../../constants/site';
@@ -11,7 +12,7 @@ export default function TopBar() {
         {/* Left side: Working hours */}
         <div className="flex items-center gap-2 shrink-0 whitespace-nowrap">
           <Clock className="w-3.5 h-3.5 text-accent" />
-          <span>Ish vaqti: {SITE_CONFIG.workHours} ({SITE_CONFIG.workDays.split('(')[0].trim()})</span>
+          <WorkHours compact />
         </div>
 
         {/* Right side: Contact & Socials */}

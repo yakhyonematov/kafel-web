@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { MdOutlineSpaceDashboard as LayoutDashboard, MdOutlineShoppingBag as ShoppingBag, MdOutlineFactory as Factory, MdOutlineImage as Image, MdOutlineLogout as LogOut, MdOutlineMenu as Menu, MdOutlineClose as X, MdOutlinePerson as UserIcon, MdOutlineGroup as Users, MdOutlineAssignment as ClipboardList, MdOutlineNotifications as Bell } from 'react-icons/md';
+import { MdOutlineSpaceDashboard as LayoutDashboard, MdOutlineShoppingBag as ShoppingBag, MdOutlineFactory as Factory, MdOutlineImage as Image, MdOutlineLogout as LogOut, MdOutlineMenu as Menu, MdOutlineClose as X, MdOutlinePerson as UserIcon, MdOutlineGroup as Users, MdOutlineAssignment as ClipboardList, MdOutlineAccessTime as Clock, MdOutlineNotifications as Bell } from 'react-icons/md';
 import { useAuthStore } from '../../store/useAuthStore';
 import { ADMIN_NAVIGATION_LINKS } from '../../constants/navigation';
 import { useNewOrderAlerts } from '../../hooks/useNewOrderAlerts';
@@ -64,6 +64,7 @@ export default function AdminLayout({
     if (label === 'Mahsulotlar') return <ShoppingBag className="w-4 h-4" />;
     if (label === 'Zavodlar') return <Factory className="w-4 h-4" />;
     if (label === 'Galereya') return <Image className="w-4 h-4" />;
+    if (label === 'Ish jadvali') return <Clock className="w-4 h-4" />;
     if (label === 'Xodimlar') return <Users className="w-4 h-4" />;
     return <LayoutDashboard className="w-4 h-4" />;
   };

@@ -1,5 +1,7 @@
 'use client';
 
+import WorkHours from '@/components/site/WorkHours';
+import BranchContacts from '@/components/site/BranchContacts';
 import React from 'react';
 import Link from 'next/link';
 import { MdOutlineCall as Phone, MdOutlineEmail as Mail, MdOutlineLocationOn as MapPin, MdOutlineAccessTime as Clock, MdOutlineSend as Send, MdOutlineArrowUpward as ArrowUp, MdOutlineVerifiedUser as ShieldCheck } from 'react-icons/md';
@@ -119,12 +121,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-0.5 text-white/90">
-                  <a href={`tel:${SITE_CONFIG.phonePrimary.replace(/\s+/g, '')}`} className="hover:text-white transition-colors font-medium">
-                    {SITE_CONFIG.phonePrimary}
-                  </a>
-                  <a href={`tel:${SITE_CONFIG.phoneSecondary.replace(/\s+/g, '')}`} className="hover:text-white transition-colors">
-                    {SITE_CONFIG.phoneSecondary}
-                  </a>
+                  <BranchContacts />
                 </div>
               </li>
               <li className="flex items-center gap-3">
@@ -136,8 +133,7 @@ export default function Footer() {
               <li className="flex items-start gap-3 text-xs text-text-inverse/50 pt-1">
                 <Clock className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                 <div className="space-y-0.5">
-                  <p className="font-semibold text-white/80">{SITE_CONFIG.workHours}</p>
-                  <p className="text-[10px]">{SITE_CONFIG.workDays}</p>
+                  <WorkHours />
                 </div>
               </li>
             </ul>

@@ -18,5 +18,6 @@ export const ADMIN_NAVIGATION_LINKS: NavItem[] = [
   { label: 'Mahsulotlar', href: '/admin/products', icon: 'Package' },
   { label: 'Zavodlar', href: '/admin/factories', icon: 'Factory' },
   { label: 'Galereya', href: '/admin/gallery', icon: 'Images' },
+  { label: 'Ish jadvali', href: '/admin/settings', icon: 'Clock' },
   { label: 'Xodimlar', href: '/admin/users', icon: 'Users' },
 ];

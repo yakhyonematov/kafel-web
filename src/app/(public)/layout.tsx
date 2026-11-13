@@ -1,3 +1,4 @@
+import { ScheduleProvider } from '@/components/site/WorkHours';
 import React from 'react';
 import TopBar from '../../components/layout/TopBar';
 import Header from '../../components/layout/Header';
@@ -10,7 +11,7 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <ScheduleProvider>
       <TopBar />
       <Header />
       <main className="flex-1">
@@ -18,6 +19,6 @@ export default function PublicLayout({
       </main>
       <Footer />
       <CartDrawer />
-    </>
+    </ScheduleProvider>
   );
 }

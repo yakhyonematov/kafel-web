@@ -1,5 +1,7 @@
 'use client';
 
+import WorkHours from '@/components/site/WorkHours';
+import BranchContacts from '@/components/site/BranchContacts';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import HeroBanner from '../../components/home/HeroBanner';
@@ -12,7 +14,7 @@ import ContactForm from '../../components/home/ContactForm';
 import { productService } from '../../services/product.service';
 import { Product } from '../../types';
 import Reveal from '../../components/ui/Reveal';
-import { MdOutlineVerifiedUser as ShieldCheck, MdOutlineLocalShipping as Truck, MdOutlineEmojiEvents as Award, MdOutlineAutoAwesome as Sparkles, MdOutlineLocationOn as MapPin, MdOutlineCall as Phone, MdOutlineAccessTime as Clock, MdOutlineArrowForward as ArrowRight, MdOutline360 as View, MdOutlineMap as MapIcon } from 'react-icons/md';
+import { MdOutlineVerifiedUser as ShieldCheck, MdOutlineLocalShipping as Truck, MdOutlineEmojiEvents as Award, MdOutlineAutoAwesome as Sparkles, MdOutlineLocationOn as MapPin, MdOutlineArrowForward as ArrowRight, MdOutline360 as View, MdOutlineMap as MapIcon } from 'react-icons/md';
 
 const PanoramaViewer = dynamic(() => import('../../components/home/PanoramaViewer'), { ssr: false });
 
@@ -164,7 +166,7 @@ export default function HomePage() {
               Biz mijozlarimizni sifatli va chiroyli kafel mahsulotlari bilan taminlaymiz va ularga o’zgacha kayfiyat ulashamiz. 20 yildan ortiq vaqt davomida Xitoy va Hindiston davlatlaridan eng zamonaviy keramika mahsulotlarini import qilib kelmoqdamiz.
             </p>
             <p className="text-sm text-text-secondary leading-relaxed">
-              Shuningdek, mahalliy ishlab chiqarilgan sifatli kafel mahsulotlarini qo'shni Qirg'iziston, Qozog'iston va Tojikiston davlatlariga eksport qilamiz hamda respublikamiz bo‘ylab ulgurji dilerlarga yetkazib beramiz.
+              Shuningdek, mahalliy ishlab chiqarilgan sifatli kafel mahsulotlarini qo'shni Qirg'iziston, Tojikiston va Qozog'iston davlatlariga eksport qilamiz hamda respublikamiz bo‘ylab ulgurji dilerlarga yetkazib beramiz.
             </p>
 
             <div className="border-l-2 border-accent pl-4 my-2 italic text-text-primary text-sm font-medium">
@@ -453,14 +455,8 @@ export default function HomePage() {
                     <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                     <span>Farg'ona viloyati, Farg'ona shahar, Vatan ravnaqi ko'chasi 47-uy</span>
                   </p>
-                  <a href="tel:+998911296666" className="flex items-start gap-3 hover:text-white transition-colors">
-                    <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                    <span className="font-medium text-white">+998 91 129 6666</span>
-                  </a>
-                  <p className="flex items-start gap-3">
-                    <Clock className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                    <span>Ish vaqti: 08:00 dan 17:00 gacha<br/>(Dushanbadan - Shanbagacha)</span>
-                  </p>
+                  <BranchContacts />
+                  <WorkHours />
                 </div>
               </div>
 
